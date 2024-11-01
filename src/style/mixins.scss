@@ -1,0 +1,120 @@
+@use "sass:math";
+// Переменные для миксина контейнера
+$breakpoint-to-fluid: 992px;
+$base-vw: 1920px;
+
+$breakpoint-lg: 992px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 576px;
+
+// ширина контейнера + padding с двух сторон
+$container-lg: 1230px;
+$container-md: 920px;
+$container-sm: 640px;
+
+$p: 15px;
+
+$color-text-black: #0a0909;
+$color-text-gray: #857f7f;
+$color-text-gray-light: #bbbbbb;
+$color-text-purple: #bb3aa7;
+$color-text-purple-light: #d983f5;
+$color-text-blue: #3F69D4;
+$white: #FFFFFF;
+$yellow: #C58A46;
+
+$color-background-blue-light: #eef4fa;
+$color-background-green: #52ba33;
+$color-background-black: #1f1f1f;
+$color-background-gray: #dfe1e3;
+$color-background-gray-light: #f5f5f5;
+
+$color-border-gray: #dddddd;
+
+$gradient-purple-peach: 131.78deg,
+  #a23fd4 0.29%,
+  #e77982 101.04%;
+$shadow-card: 0px 0px 14px 0px #92949740;
+$shadow-card-less: 0px 0px 8px 0px #92949740;
+
+@function round($number, $decimals: 0) {
+  $n: 1;
+
+  @if $decimals >0 {
+    @for $i from 1 through $decimals {
+      $n: $n * 10;
+    }
+  }
+
+  @return math.div(math.round($number * $n), $n);
+}
+
+@function px-to-rem($px) {
+  $rems: math.div($px, 16px) * 1rem;
+  @return $rems;
+}
+
+@function fluid($min-size,
+  $max-size,
+  $min-breakpoint: 1024px,
+  $max-breakpoint: 1600px,
+  $unit: vw) {
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: round($slope * 100, 3);
+  $intercept-rem: round(px-to-rem($min-size - $slope * $min-breakpoint), 3);
+  $min-size-rem: round(px-to-rem($min-size), 3);
+  $max-size-rem: round(px-to-rem($max-size), 3);
+
+  @return clamp(#{$min-size-rem},
+    #{$slope-to-unit}#{$unit} + #{$intercept-rem},
+    #{$max-size-rem});
+}
+
+@mixin section {
+  --container-width: 1560px;
+
+  display: grid;
+  grid-template-columns:
+    [full-start left-start] minmax($p, 1fr) [right-start center-start] minmax(0, var(--container-width)) [left-end center-end] minmax($p, 1fr) [full-end right-end];
+
+  grid-template-rows:
+    [full-start left-start center-start right-start] auto [full-end left-end center-end right-end];
+
+  @media (max-width: $breakpoint-lg) {
+    --container-width: #{$container-md};
+  }
+
+  @media (max-width: $breakpoint-md) {
+    --container-width: #{$container-sm};
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    --container-width: 100%;
+  }
+}
+
+.section {
+  @include section();
+}
+
+.section__container {
+  grid-area: center;
+}
+
+@mixin laptop {
+  @media (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}

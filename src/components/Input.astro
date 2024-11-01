@@ -1,0 +1,62 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  variant?: "filter";
+}
+
+const { variant, ...restProps } = Astro.props;
+
+const classList = ["input"];
+if (variant) classList.push(`input--${variant}`);
+---
+
+<input {...restProps} class:list={classList} />
+
+<style is:global lang="scss">
+  .input {
+    border-radius: 6px;
+    padding: 14px 15px;
+    border: 1px solid $color-text-gray-light;
+    transition: border-color 0.38s ease-in-out;
+    line-height: 1;
+
+    &:hover {
+      border-color: $color-text-purple;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: unset;
+    }
+
+    &::placeholder {
+      color: $color-text-gray-light;
+    }
+
+    &--filter {
+      padding: 9px 10px;
+
+      &::placeholder {
+        color: $color-text-gray;
+      }
+    }
+  }
+</style>
+
+<script>
+  import IMask from "imask/holder";
+  import "imask/masked/pattern";
+
+  const phone = document.querySelectorAll('[name="phone"]');
+  if (phone) {
+    phone.forEach((element) => {
+      if (element instanceof HTMLElement) {
+        const maskOptions = {
+          mask: "+{7}(000) 000-00-00",
+        };
+        IMask(element, maskOptions);
+      }
+    });
+  }
+</script>

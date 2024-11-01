@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "printWidth": 300,
+        "bracketSameLine": true,
+        "htmlWhitespaceSensitivity": "ignore"
+      }
+    }
+  ]
+}

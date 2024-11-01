@@ -1,0 +1,25 @@
+.section {
+  --container-width: 1230px;
+  display: grid;
+  grid-template-columns: [full-start left-start] minmax(15px, 1fr) [right-start center-start] minmax(0, var(--container-width)) [left-end center-end] minmax(15px, 1fr) [full-end right-end];
+  grid-template-rows: [full-start left-start center-start right-start] auto [full-end left-end center-end right-end];
+}
+@media (max-width: 992px) {
+  .section {
+    --container-width: 920px;
+  }
+}
+@media (max-width: 768px) {
+  .section {
+    --container-width: 640px;
+  }
+}
+@media (max-width: 576px) {
+  .section {
+    --container-width: 100%;
+  }
+}
+
+.section__container {
+  grid-area: center;
+}/*# sourceMappingURL=mixins.css.map */

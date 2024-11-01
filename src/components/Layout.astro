@@ -1,0 +1,258 @@
+---
+import normalize from "../style/normalize.css?url";
+import swiper from "swiper/swiper-bundle.css?url";
+import fancybox from "@fancyapps/ui/dist/fancybox/fancybox.css?url";
+import accordion from "accordion-js/dist/accordion.css?url";
+import choices from "choices.js/public/assets/styles/choices.min.css?url";
+import tippy from "tippy.js/dist/tippy.css?url";
+
+import Button from "./Button.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import Modal from "./Modal.astro";
+import Input from "./Input.astro";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "Заголовок" } = Astro.props;
+
+const version = String(Date.now()).substring(5);
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href={swiper} />
+    <link rel="stylesheet" href={fancybox} />
+    <link rel="stylesheet" href={accordion} />
+    <link rel="stylesheet" href={choices} />
+    <link rel="stylesheet" href={tippy} />
+    <link rel="stylesheet" href="/fonts/icomoon/style.css" />
+    <link rel="stylesheet" href={normalize} />
+  </head>
+  <body>
+    <Header />
+    <slot />
+
+    <Modal id="location" variant="location" title="Выберите город">
+      <div class="modal__list">
+        <a href="#" class="modal__link modal__link--active">Саратов</a>
+        <a href="#" class="modal__link">Кострома</a>
+        <a href="#" class="modal__link">Ярославль</a>
+      </div>
+    </Modal>
+
+    <Modal id="product" variant="product">
+      <div class="modal__product">
+        <img src="/img/product.png" alt="" class="modal__product-image" />
+        <div class="modal__product-content">
+          <div class="modal__product-title">
+            Apple iPhone 15 Pro 128Gb Natural Titanium
+          </div>
+          <div class="modal__product-price">100 999 ₽</div>
+          <div class="modal__product-text">Добавлен в корзину</div>
+        </div>
+        <div class="modal__product-buttons">
+          <Button color="primary" variant="product">Перейти в корзину</Button>
+          <Button color="tertiary" variant="product">к покупкам</Button>
+        </div>
+      </div>
+    </Modal>
+
+    <Modal id="popover" variant="popover" />
+
+    <Modal id="one-click" variant="click" title="Купить в один клик">
+      <div class="modal__click">
+        <img src="/img/product.png" alt="" class="modal__click-image" />
+        <div class="modal__click-title">
+          Apple iPhone 15 Pro 128Gb Natural Titanium
+        </div>
+        <div class="modal__click-price">100 999 ₽</div>
+        <div class="modal__click-sale">100 999 ₽</div>
+      </div>
+      <div class="modal__stack">
+        <Input placeholder="Ваш телефон (обязательно)" name="phone" />
+        <Button color="primary" variant="submit">Отправить</Button>
+      </div>
+    </Modal>
+
+    <Modal id="anketa" variant="anketa" title="Заполните анкету">
+      <div class="modal__stack">
+        <Input placeholder="Вашe имя (обязательно)" name="name" />
+        <Input placeholder="Ваш телефон (обязательно)" name="phone" />
+        <Button color="primary" variant="submit">Отправить</Button>
+      </div>
+    </Modal>
+
+    <Modal id="order" variant="contact">
+      <div class="modal__col">
+        <img src="/img/check.svg" alt="" class="modal__check" />
+        <h2 class="modal__title">Спасибо за заказ</h2>
+        <p class="modal__text">
+          Ваш заказ успешно оформлен. Мы свяжемся с вами в ближайшее время.
+          Номер вашего заказа <strong> №1234 </strong>
+        </p>
+        <Button wide color="primary" variant="submit"
+          >Вернуться в магазин</Button
+        >
+      </div>
+    </Modal>
+    <Modal id="contact" variant="contact">
+      <div class="modal__col">
+        <img src="/img/check.svg" alt="" class="modal__check" />
+        <h2 class="modal__title">Спасибо за обращение</h2>
+        <p class="modal__text">Мы свяжемся с вами в ближайшее время.</p>
+        <Button wide color="primary" variant="submit">ОК</Button>
+      </div>
+    </Modal>
+    <Footer />
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" defer></script>
+    <script is:inline src="/js/map.js" defer></script>
+    <script is:inline src=`/js/script.js?v=0.${version}` defer></script>
+  </body>
+</html>
+
+<style is:global lang="scss">
+  @font-face {
+    font-family: "Trial";
+    src: url("../fonts/Cinetype-Trial-Regular/GT-Cinetype-Trial-Regular.otf") format("otf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Didot";
+    src: url("../fonts/DidotLTPro-Bold/DidotLTPro-Roman.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "UI";
+    src: url("../fonts/UI_font/SFUIDisplay-Light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "UI";
+    src: url("../fonts/UI_font/SFUIDisplay-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "UI";
+    src: url("../fonts/UI_font/SFUIDisplay-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "UI";
+    src: url("../fonts/UI_font/SFUIDisplay-Semibold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+  }
+
+
+  html {
+    height: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100%;
+    font-family: "Trial", sans-serif;
+    font-weight: 400;
+    color: $color-text-black;
+    background-color: $color-background-blue-light;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    &:has(.mainBanner){
+      .header{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 3;
+      }
+    }
+  }
+
+  @keyframes p-opacity {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .ruble {
+    &::after {
+      content: "₽";
+      margin-left: 0.25em;
+    }
+  }
+
+  .tippy-box[data-theme~="apple"] {
+    background-color: white;
+    color: $color-text-black;
+    font-size: 14px;
+    line-height: 20px;
+    padding: fluid(10px, 20px);
+    box-shadow: $shadow-card;
+    border-radius: 20px;
+  }
+
+  .bg-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      #ffffff 10%,
+      #ffffff 50%,
+      #ffffff 90%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  .title {
+    font-size: fluid(28px, 40px);
+    line-height: 1.2;
+  }
+
+  .logo{
+    width: 97px;
+    height: 60px;
+    object-fit: contain;
+  }
+  @media (max-width: 992px) {
+    html {
+      scroll-padding-top: 64px;
+    }
+    .body-overflow {
+      overflow-y: clip;
+    }
+    .bg-gradient--desktop {
+      background: unset;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .title--small {
+      font-size: 22px;
+    }
+  }
+</style>

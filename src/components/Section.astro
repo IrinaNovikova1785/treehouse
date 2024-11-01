@@ -1,0 +1,12 @@
+<section class="section">
+    <div class="section__container"><slot /></div>
+</section>
+
+<style is:global lang="scss">
+    .section{
+        @include section;
+        &__container{
+            grid-area: center;
+        }
+    }
+</style>

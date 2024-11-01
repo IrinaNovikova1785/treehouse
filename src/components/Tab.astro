@@ -1,0 +1,184 @@
+---
+interface Props {
+  items: string[];
+  open: number;
+}
+
+const { items, open } = Astro.props;
+---
+
+<div
+  class:list={["tab", { "tab--options": Astro.slots.has("options") }]}
+  data-open={open}
+>
+  <div class="tab__header">
+    <div class="tab__list">
+      {items.map((tab) => <div class="tab__item">{tab}</div>)}
+    </div>
+    <slot name="options" />
+  </div>
+  <div class="tab__container">
+    <slot />
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .tab {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(20px, 40px);
+
+    &__header {
+      display: flex;
+      justify-content: center;
+    }
+
+    &--options {
+      gap: 30px;
+    }
+
+    &--options &__header {
+      justify-content: space-between;
+      gap: fluid(15px, 20px);
+    }
+
+    &__list {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    &__item {
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: fluid(14px, 16px);
+      padding: 9px fluid(14px, 19px);
+      border: 1px solid $color-border-gray;
+      user-select: none;
+      background-color: white;
+      transition: border-color 0.38s ease-in-out;
+      font-weight: 400;
+
+      &:hover,
+      &--active {
+        border-color: $color-text-purple;
+      }
+    }
+
+    &__container {
+    }
+
+    &__content {
+      display: none;
+      gap: fluid(30px, 60px);
+      opacity: 0;
+      transition: opacity 0.38s ease-in-out;
+
+      &--active {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &--opacity {
+        opacity: 1;
+      }
+    }
+
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      gap: fluid(15px, 30px);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .tab {
+      &__list {
+        gap: 8px;
+      }
+
+      &--options &__header {
+        flex-direction: column-reverse;
+        justify-content: unset;
+      }
+
+      &__item {
+        &:hover:not(&--active) {
+        }
+        &--active {
+        }
+      }
+
+      &__container {
+      }
+
+      &__content {
+        &--active {
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll(".tab");
+
+  tabs.forEach((tab) => tabLogic(tab));
+
+  function tabLogic(tab: Element) {
+    const triggers = tab.querySelectorAll(".tab__item");
+    const contents = tab.querySelectorAll(".tab__content");
+    const tabList = document.querySelector(".tab__list");
+    const tabContainer = document.querySelector(".tab__container");
+
+    const open = tab.getAttribute("data-open") || 1;
+
+    triggers.forEach((trigger, index) => {
+      trigger.setAttribute("data-tab", String(index + 1));
+      if (+open === index + 1) {
+        trigger.classList.add("tab__item--active");
+      }
+    });
+
+    contents.forEach((content, index) => {
+      content.setAttribute("data-tab", String(index + 1));
+      if (+open === index + 1) {
+        content.classList.add("tab__content--active");
+        content.classList.add("tab__content--opacity");
+      }
+    });
+
+    const clickHandler = (event: Event) => {
+      triggers.forEach((t) => {
+        t.classList.remove("tab__item--active");
+      });
+
+      contents.forEach((c) => {
+        c.classList.remove("tab__content--active");
+        c.classList.remove("tab__content--opacity");
+      });
+
+      if (event.target instanceof Element && tabList && tabContainer) {
+        const index = event.target.getAttribute("data-tab");
+
+        const selectedTrigger = tabList.querySelector(`[data-tab="${index}"]`);
+        if (selectedTrigger) selectedTrigger.classList.add("tab__item--active");
+
+        const selectedContent = tabContainer.querySelector(
+          `[data-tab="${index}"]`,
+        );
+        if (selectedContent) {
+          selectedContent.classList.add("tab__content--active");
+
+          setTimeout(() => {
+            selectedContent.classList.add("tab__content--opacity");
+          }, 200);
+        }
+      }
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", clickHandler);
+    });
+  }
+</script>

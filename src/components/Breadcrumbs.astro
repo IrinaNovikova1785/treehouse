@@ -1,0 +1,74 @@
+---
+interface Props {
+  items: string[];
+  last: string;
+}
+
+const { items, last } = Astro.props;
+---
+
+<section class="breadcrumb">
+  <div class="breadcrumb__container">
+    <span>
+      {
+        items.map((item) => (
+          <span>
+            <a href="#">{item}</a>
+          </span>
+        ))
+      }
+      <span class="breadcrumb_last">{last}</span>
+    </span>
+  </div>
+</section>
+
+<style is:global lang="scss">
+  .breadcrumb {
+    @include section;
+    margin-top: 40px;
+    margin-bottom: 45px;
+    line-height: 1.4;
+
+    @include laptop {
+      margin-top: 65px;
+      margin-bottom: 20px;
+    }
+
+    &__container {
+      grid-area: center;
+    }
+
+    a,
+    &_last {
+      font-size: 16px;
+      color: $color-text-gray;
+      font-weight: 400;
+      transition: color 0.38s ease-in-out;
+
+      @include laptop {
+        font-size: 14px;
+      }
+
+      &::before {
+        content: "/";
+        margin-right: 15px;
+      }
+    }
+
+    span:first-child > a::before {
+      display: none;
+    }
+
+    span {
+      margin-right: 12px;
+    }
+
+    &_last {
+      color: $color-text-black;
+    }
+
+    a:hover {
+      color: $color-text-purple;
+    }
+  }
+</style>

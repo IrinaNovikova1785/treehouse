@@ -1,0 +1,71 @@
+---
+interface Props {
+  href?: string;
+  color?: "borderGreen";
+  variant?: "round" | "submit";
+  submit?: boolean;
+  close?: boolean;
+  icon?: string;
+  buy?: boolean;
+  modal?: boolean;
+  wide?: boolean;
+}
+
+const {
+  href = undefined,
+  close,
+  variant,
+  color,
+  icon,
+  buy,
+  modal,
+  wide,
+  submit = false,
+} = Astro.props;
+
+const classList = [
+  "button",
+  `button--${color}`,
+  `button--${variant}`,
+  { "button--close": close },
+  { "button--wide": wide },
+  { "add-cart": buy },
+  { modalbox: modal },
+];
+
+const Element = href ? "a" : submit ? "button" : "div";
+---
+
+<Element {href} type={submit ? "submit" : undefined} class:list={classList}>
+  <slot />
+  {icon && <span class:list={["button__icon", `icon-${icon}`]} />}
+</Element>
+
+<style is:global lang="scss">
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 48px;
+    border-radius: fluid(60px, 80px);
+    background-color: $yellow;
+    overflow: hidden;
+    color: $white;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &__icon {
+      font-size: 30px;
+    }
+    &--round{
+      padding: 10px;
+      border-radius: 50%;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .button {
+    }
+  }
+</style>

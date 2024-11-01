@@ -1,0 +1,536 @@
+---
+const menuCol1: string[] = [
+  "Каталог",
+  "iPhone",
+  "iPad",
+  "AirPods",
+  "Mac",
+  "Watch",
+  "Аксессуары",
+  "Dyson",
+  "Vision Pro",
+  "Android",
+];
+
+const menuCol2: string[] = [
+  "О компании",
+  "Доставка и опалата",
+  "traid-in",
+  "Контакты",
+  "Блог",
+];
+
+const menuCol3: string[] = ["Распродажа"];
+---
+
+<footer class="footer section">
+  <div class="footer__container">
+    <div class="footer__nav">
+      <ul class="footer__menu">
+        {
+          menuCol1.map((item) => (
+            <li>
+              <a href="#">{item}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="footer__menu">
+        {
+          menuCol2.map((item) => (
+            <li>
+              <a href="#">{item}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="footer__menu">
+        {
+          menuCol3.map((item) => (
+            <li>
+              <a href="#">{item}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="footer__logo">
+      <img src="/img/logo.svg" />
+      APP-ROOM
+    </div>
+    <div class="footer__copy">
+      © 2011 - 2024 Магазин цифровой техники App-Room
+    </div>
+    <a href="https://spaceapp.ru/" class="footer__dev">
+      Разработка сайта <img src="/img/dev.svg" alt="" />
+    </a>
+    <div class="footer__contact">
+      <div class="footer__questions">
+        <a class="footer__phone" href="tel:+78452253835">8 (8452) 25-38-35</a>
+        <a href="mailto:applesaratov@yandex.ru" class="footer__email"
+          >applesaratov@yandex.ru</a
+        >
+        <a href="#" class="footer__button"> Остались вопросы? </a>
+      </div>
+      <div class="footer__column">
+        <p class="footer__text">Адрес</p>
+        <p class="footer__text">г. Саратов, ул. Слонова, 42/48</p>
+        <a href="#" class="footer__map">Карта сайта</a>
+      </div>
+      <div class="footer__column">
+        <p class="footer__text">Режим работы</p>
+        <p class="footer__time">
+          <span> пн-пт 10:00 - 20:00 </span>
+          <span> сб-вс 10:00 - 18:00 </span>
+        </p>
+      </div>
+      <div class="footer__social">
+        <p class="footer__text">Мы на связи</p>
+        <a
+          href="https://vk.com/public211718859"
+          class="footer__icon icon-vk-box"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style is:global lang="scss">
+  .footer {
+    order: 20;
+    background-color: $color-background-black;
+    color: white;
+    padding-top: fluid(30px, 36px);
+    padding-bottom: fluid(36px, 44px);
+
+    &__icon {
+      font-size: 30px;
+      width: fit-content;
+    }
+
+    & a:not(&__button) {
+      transition: color 0.38s ease-in-out;
+      &:hover {
+        color: $color-text-purple-light;
+      }
+    }
+
+    &__button {
+      border-radius: 999px;
+      color: white;
+      font-size: fluid(14px, 16px);
+      text-align: center;
+      padding: fluid(11px, 12px) fluid(30px, 50px);
+      width: fit-content;
+      font-weight: 400;
+      transition: color 0.38s ease-in-out;
+      transition-property: color, background-color;
+      display: inline-flex;
+      border: 1px solid white;
+
+      &:hover {
+        color: black;
+        background-color: white;
+      }
+    }
+
+    &__container {
+      grid-area: center;
+      display: grid;
+      grid-template-columns: auto 1fr auto minmax(auto, fluid(350px, 506px));
+      grid-template-rows: auto 1fr;
+      row-gap: fluid(30px, 50px);
+      grid-template-areas:
+        "nav nav nav contact"
+        "logo copy dev contact";
+    }
+
+    &__nav {
+      margin-top: 6px;
+      grid-area: nav;
+      display: flex;
+      column-gap: fluid(100px, 154px);
+      row-gap: 20px;
+      text-transform: uppercase;
+      font-size: fluid(14px, 16px);
+      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: start;
+    }
+
+    &__menu {
+      display: flex;
+      flex-direction: column;
+      gap: fluid(8px, 10px);
+    }
+
+    &__logo {
+      align-self: center;
+      grid-area: logo;
+      font-size: fluid(21px, 24px);
+      font-weight: 500;
+      display: flex;
+      gap: 0.6em;
+      align-items: center;
+      margin-right: 20px;
+
+      img {
+        object-fit: contain;
+        height: 2.35em;
+        width: auto;
+      }
+    }
+
+    &__copy {
+      grid-area: copy;
+      align-self: center;
+      font-size: fluid(14px, 18px);
+      font-weight: 300;
+    }
+
+    &__dev {
+      grid-area: dev;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      font-size: fluid(14px, 16px);
+      padding-right: fluid(12px, 22px);
+      font-weight: 300;
+      gap: 1.5em;
+      letter-spacing: 0.06em;
+      justify-self: end;
+    }
+
+    &__contact {
+      grid-area: contact;
+      border-left: 1px solid white;
+      grid-row: 1 / -1;
+      padding-left: fluid(30px, 60px);
+      display: grid;
+      row-gap: fluid(40px, 53px);
+      grid-auto-rows: max-content;
+    }
+
+    &__column {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    &__questions {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__text {
+      font-size: fluid(14px, 16px);
+    }
+
+    &__map {
+      font-size: fluid(14px, 16px);
+      text-decoration: underline;
+      width: fit-content;
+    }
+
+    &__time {
+      font-size: fluid(14px, 16px);
+      display: inline-flex;
+      gap: 0.5em;
+
+      span:not(:last-child) {
+        &::after {
+          content: "|";
+          margin-left: 0.5em;
+        }
+      }
+    }
+
+    &__phone {
+      font-weight: 600;
+      font-size: fluid(20px, 28px);
+      line-height: 1;
+      margin-bottom: 5px;
+      width: fit-content;
+    }
+
+    &__email {
+      font-weight: 400;
+      font-size: fluid(14px, 16px);
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    &__social {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    &__social &__text {
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .footer {
+      padding-bottom: 20px;
+      &__button {
+      }
+
+      &__container {
+        row-gap: 1rem;
+        grid-template-columns: auto 1fr minmax(auto, fluid(350px, 506px));
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+          "nav nav  contact"
+          "logo logo contact"
+          "copy dev contact";
+      }
+
+      &__nav {
+      }
+
+      &__menu {
+      }
+
+      &__logo {
+      }
+
+      &__copy {
+      }
+
+      &__dev {
+      }
+
+      &__contact {
+      }
+
+      &__column {
+      }
+
+      &__questions {
+      }
+
+      &__text {
+      }
+
+      &__time {
+      }
+
+      &__phone {
+      }
+
+      &__email {
+      }
+
+      &__social {
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .footer {
+      &__button {
+      }
+
+      &__container {
+        grid-template-columns: auto 1fr minmax(auto, fluid(350px, 506px));
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+          "nav nav  contact"
+          "logo logo contact"
+          "copy copy contact"
+          "dev dev contact";
+      }
+
+      &__nav {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: auto 1fr;
+        row-gap: 8px;
+      }
+
+      &__menu {
+        &:first-child {
+          grid-row: span 2;
+        }
+      }
+
+      &__logo {
+      }
+
+      &__copy {
+      }
+
+      &__dev {
+        justify-self: start;
+        margin-top: -10px;
+      }
+
+      &__contact {
+      }
+
+      &__column {
+      }
+
+      &__questions {
+      }
+
+      &__text {
+      }
+
+      &__time {
+      }
+
+      &__phone {
+      }
+
+      &__email {
+      }
+
+      &__social {
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      &__button {
+      }
+
+      &__container {
+        justify-content: center;
+        row-gap: 25px;
+        grid-template-columns: 100%;
+        grid-template-rows: unset;
+        grid-template-areas:
+          "logo"
+          "nav"
+          "contact"
+          "copy"
+          "dev";
+      }
+
+      &__nav {
+        margin: unset;
+        justify-content: space-between;
+        column-gap: 2rem;
+        text-transform: unset;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(3, auto);
+      }
+
+      &__menu {
+      }
+
+      &__logo {
+      }
+
+      &__copy {
+        line-height: 1.25;
+        text-align: center;
+      }
+
+      &__dev {
+        justify-self: center;
+        margin-top: -15px;
+        font-size: 16px;
+      }
+
+      &__contact {
+        grid-row: unset;
+        padding: unset;
+        border: unset;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        row-gap: 25px;
+      }
+
+      &__column {
+        grid-column: span 2;
+      }
+
+      &__questions {
+      }
+
+      &__text {
+      }
+
+      &__time {
+      }
+
+      &__phone {
+      }
+
+      &__email {
+      }
+
+      &__social {
+        grid-area: 1 / 2 / 2 / 3;
+        line-height: 1;
+        justify-self: end;
+        gap: 10px;
+
+        a {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .footer {
+      &__button {
+      }
+
+      &__container {
+        grid-template-columns: auto;
+        justify-content: unset;
+      }
+
+      &__nav {
+        justify-content: unset;
+        column-gap: 30%;
+        grid-template-columns: repeat(2, auto);
+      }
+
+      &__menu {
+      }
+
+      &__logo {
+      }
+
+      &__copy {
+      }
+
+      &__dev {
+      }
+
+      &__contact {
+      }
+
+      &__column {
+        gap: 4px;
+      }
+
+      &__questions {
+      }
+
+      &__text {
+      }
+
+      &__time {
+      }
+
+      &__phone {
+      }
+
+      &__email {
+        margin-bottom: 6px;
+      }
+
+      &__social {
+      }
+    }
+  }
+</style>

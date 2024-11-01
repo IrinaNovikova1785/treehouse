@@ -1,0 +1,36 @@
+{
+  "name": "app-room",
+  "type": "module",
+  "version": "0.0.2",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build && node process-html.mjs && npm run format",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "npx prettier build --write --log-level silent"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@fancyapps/ui": "^5.0.36",
+    "@popperjs/core": "^2.11.8",
+    "accordion-js": "^3.3.4",
+    "astro": "^4.16.8",
+    "astro-relative-links": "^0.3.9",
+    "choices.js": "^10.2.0",
+    "imask": "^7.6.1",
+    "pnpm": "^9.12.3",
+    "swiper": "^11.1.4",
+    "tippy.js": "^6.3.7",
+    "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "@yandex/ymaps3-types": "^0.0.27",
+    "globby": "^14.0.2",
+    "jsdom": "^24.1.0",
+    "prettier": "3.3.2",
+    "prettier-plugin-astro": "^0.14.0",
+    "sass": "^1.80.5",
+    "vite-plugin-full-reload": "^1.1.0"
+  }
+}
