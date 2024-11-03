@@ -14,28 +14,11 @@ $container-sm: 640px;
 
 $p: 15px;
 
-$color-text-black: #0a0909;
-$color-text-gray: #857f7f;
-$color-text-gray-light: #bbbbbb;
-$color-text-purple: #bb3aa7;
-$color-text-purple-light: #d983f5;
-$color-text-blue: #3F69D4;
 $white: #FFFFFF;
+$black: #000000;
 $yellow: #C58A46;
+$green: #50735F;
 
-$color-background-blue-light: #eef4fa;
-$color-background-green: #52ba33;
-$color-background-black: #1f1f1f;
-$color-background-gray: #dfe1e3;
-$color-background-gray-light: #f5f5f5;
-
-$color-border-gray: #dddddd;
-
-$gradient-purple-peach: 131.78deg,
-  #a23fd4 0.29%,
-  #e77982 101.04%;
-$shadow-card: 0px 0px 14px 0px #92949740;
-$shadow-card-less: 0px 0px 8px 0px #92949740;
 
 @function round($number, $decimals: 0) {
   $n: 1;

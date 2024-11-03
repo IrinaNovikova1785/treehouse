@@ -5,6 +5,7 @@ import fancybox from "@fancyapps/ui/dist/fancybox/fancybox.css?url";
 import accordion from "accordion-js/dist/accordion.css?url";
 import choices from "choices.js/public/assets/styles/choices.min.css?url";
 import tippy from "tippy.js/dist/tippy.css?url";
+// import parralax from "parallax-js/src/parallax.js"
 
 import Button from "./Button.astro";
 import Footer from "./Footer.astro";
@@ -39,7 +40,7 @@ const version = String(Date.now()).substring(5);
     <Header />
     <slot />
 
-    <Modal id="location" variant="location" title="Выберите город">
+    <!-- <Modal id="location" variant="location" title="Выберите город">
       <div class="modal__list">
         <a href="#" class="modal__link modal__link--active">Саратов</a>
         <a href="#" class="modal__link">Кострома</a>
@@ -109,7 +110,7 @@ const version = String(Date.now()).substring(5);
         <p class="modal__text">Мы свяжемся с вами в ближайшее время.</p>
         <Button wide color="primary" variant="submit">ОК</Button>
       </div>
-    </Modal>
+    </Modal> -->
     <Footer />
 
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" defer></script>
@@ -134,36 +135,13 @@ const version = String(Date.now()).substring(5);
     font-display: swap;
   }
   @font-face {
-    font-family: "UI";
-    src: url("../fonts/UI_font/SFUIDisplay-Light.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "UI";
-    src: url("../fonts/UI_font/SFUIDisplay-Regular.ttf") format("truetype");
+    font-family: "Northwell";
+    src: url("../fonts/Northwell/Northwell.ttf") format("truetype");
     font-style: normal;
     font-weight: 400;
     font-display: swap;
   }
 
-  @font-face {
-    font-family: "UI";
-    src: url("../fonts/UI_font/SFUIDisplay-Medium.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "UI";
-    src: url("../fonts/UI_font/SFUIDisplay-Semibold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-  }
 
 
   html {
@@ -175,8 +153,7 @@ const version = String(Date.now()).substring(5);
     min-height: 100%;
     font-family: "Trial", sans-serif;
     font-weight: 400;
-    color: $color-text-black;
-    background-color: $color-background-blue-light;
+    color: $green;
     display: flex;
     flex-direction: column;
     font-size: 14px;
@@ -206,17 +183,6 @@ const version = String(Date.now()).substring(5);
       margin-left: 0.25em;
     }
   }
-
-  .tippy-box[data-theme~="apple"] {
-    background-color: white;
-    color: $color-text-black;
-    font-size: 14px;
-    line-height: 20px;
-    padding: fluid(10px, 20px);
-    box-shadow: $shadow-card;
-    border-radius: 20px;
-  }
-
   .bg-gradient {
     background: linear-gradient(
       180deg,
@@ -229,8 +195,9 @@ const version = String(Date.now()).substring(5);
   }
 
   .title {
-    font-size: fluid(28px, 40px);
-    line-height: 1.2;
+    font-family: "Didot";
+    font-size: fluid(28px, 48px);
+    line-height: 1;
   }
 
   .logo{
@@ -256,3 +223,15 @@ const version = String(Date.now()).substring(5);
     }
   }
 </style>
+
+<script>
+  //@ts-ignore
+  import Parallax from 'parallax-js';
+
+  var scenes = document.querySelectorAll('scene');
+
+  scenes.forEach(scene => {
+    var parallaxInstance = new Parallax(scene);
+    // parallaxInstance.friction(0.2, 0.2);
+  });
+</script>

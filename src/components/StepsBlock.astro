@@ -1,0 +1,120 @@
+---
+import Section from "./Section.astro";
+const info: {title: string; text: string}[] = [
+    {
+        title: 'saving your time', 
+        text: 'Each item in our collection seamlessly matches the next. Invest in a few pieces or the entire line for a season\'s worth of clothing options, designed to last and be loved by others once your little one has grown.',
+    }, 
+    {
+        title: 'ethical manufacturing', 
+        text: 'Our commitment to ethical production isn’t just rhetoric. We place the welfare of workers and the environment at the forefront of our decision making. Always.',
+    }, 
+    {
+        title: 'The highest quality', 
+        text: 'Our commitment to ethical production isn’t just rhetoric. We place the welfare of workers and the environment at the forefront of our decision making. Always.',
+    }, 
+    {
+        title: 'womAn owned brand', 
+        text: 'When you choose us, you\'re supporting an ethical and sustainable small business owned by a woman. We don\'t just talk the talk, we walk the walk.',
+    }, 
+]
+---
+<Section>
+    <div class="stepsBlock">
+        <div class="stepsBlock__left">
+            <div class="stepsBlock__leftInfo">
+                <h4>Our care</h4>
+                <h2 class="title">We prioritize your peace of mind.</h2>
+                {
+                    info.slice(0, 2).map((item) => (
+                        <div class="stepsBlock__step">
+                            <div class="stepsBlock__step-title">{item.title}</div>
+                            <p>{item.text}</p>
+                        </div>
+                    ))
+                }
+            </div>
+            <div class="stepsBlock__leftImg">
+                <img src="/img/steps_prlx2.svg" alt="" class="stepsBlock__leftImg-prlx">
+                <div class="stepsBlock__leftImg-img scene">
+                    <img data-depth="0.6" src="/img/steps_2.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="stepsBlock__right">
+            <div class="stepsBlock__rightImg">
+                <img src="/img/steps_prlx1.svg" alt="" class="stepsBlock__rightImg-prlx">
+                <div class="stepsBlock__rightImg-img scene">
+                    <img data-depth="0.6" src="/img/steps_1.png" alt="">
+                </div>
+            </div>
+            <div class="stepsBlock__rightInfo">
+                {
+                    info.slice(2, 4).map((item) => (
+                        <div class="stepsBlock__step">
+                            <div class="stepsBlock__step-title">{item.title}</div>
+                            <p>{item.text}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</Section>
+
+<style is:global lang="scss">
+    .stepsBlock{
+        display: flex;
+        gap: fluid(60px, 144px);
+        & > * {
+            display: flex;
+            flex-direction: column;
+        }
+        &__left, &__right{
+            &Img{
+                position: relative;
+                &-img{
+                    object-fit: contain;
+                }
+                &-prlx{
+                    position: absolute;
+                }
+            }
+        }
+        &__left{
+            &Img{
+                margin-top: auto;
+                margin-left: auto;
+                &-img{
+                    width: 214px;
+                    height: 248px;
+                }
+                &-prlx{
+                    bottom: -12px;
+                    right: 153px;
+                    z-index: -1;
+                }
+            }
+        }
+        &__right{
+            &Img{
+                &-img{
+                    width: 597px;
+                    height: 485px;
+                }
+                &-prlx{
+                    top: -93px;
+                    right: 5px;
+                }
+            }
+        }
+        &__step{
+            &-title{
+                &::before{
+                    content: counter(step);
+                    counter-reset: step;
+                }
+            }
+        }
+    }
+</style>

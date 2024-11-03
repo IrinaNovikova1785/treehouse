@@ -1,0 +1,90 @@
+---
+import Section from "@components/Section.astro";
+import Button from "@components/Button.astro";
+---
+
+<Section>
+    <div class="welcomeBlock">
+        <div class="welcomeBlock__left">
+            <img src="/img/welcome_2.png" alt="" class="welcomeBlock__img">
+            <img src="/img/welcome_1.png" alt="" class="welcomeBlock__img">
+            <div data-relative-input="true" class="welcomeBlock__prlx one scene">
+                <img data-depth="0.1" src="/img/plx_1.svg" alt="">
+            </div>
+            <div data-relative-input="true" class="welcomeBlock__prlx two scene">
+                <img data-depth="0.6" src="/img/plx_2.svg" alt="">
+            </div>
+        </div>
+        <div class="welcomeBlock__right">
+            <h4>welcome</h4>
+            <h2 class="title">Hi, meet TreeHouse.</h2>
+            <p>
+                Mindfully crafted gender-neutral children's clothing focused on your 
+                little one and designed with great care for our planet and the people on it.
+            </p>
+            <div class="welcomeBlock__buttons">
+                <Button href="#" color="borderGreen">READ MORE</Button>
+                <Button href="#" icon="arrow" color="borderGreen" variant="round"></Button>
+            </div>
+        </div>
+    </div>
+    
+</Section>
+
+<style is:global lang="scss">
+    .welcomeBlock{
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 200px;
+        &__left{
+            position: relative;
+            display: flex;
+        }
+        &__right{
+            max-width: 259px;
+            h4{
+                text-transform: uppercase;
+                margin-bottom: 16px;
+            }
+            .title{
+                margin-bottom: 16px;
+            }
+            p{
+                margin-bottom: 48px;
+            }
+        }
+        &__img{
+            position: relative;
+            object-fit: contain;
+            &:first-of-type{
+                margin-top: auto;
+                width: 173px;
+                height: 241px;
+                margin-bottom: -60px;
+                margin-right: -40px;
+                z-index: 1;
+            }
+            &:nth-child(2){
+                width: 360px;
+                height: 405px;
+            }
+        }
+        &__prlx{
+            position: absolute;
+            &.one{
+                bottom: -112px;
+                left: 40px;
+                z-index: 2;
+            }
+            &.two{
+                z-index: -1;
+            }
+        }
+        &__buttons{
+            display: flex;
+            align-items: center;
+        }
+    }
+</style>
