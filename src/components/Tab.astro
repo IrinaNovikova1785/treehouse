@@ -24,9 +24,6 @@ const { items, open } = Astro.props;
 
 <style is:global lang="scss">
   .tab {
-    display: flex;
-    flex-direction: column;
-    gap: fluid(20px, 40px);
 
     &__header {
       display: flex;
@@ -50,18 +47,14 @@ const { items, open } = Astro.props;
 
     &__item {
       cursor: pointer;
-      border-radius: 8px;
-      font-size: fluid(14px, 16px);
-      padding: 9px fluid(14px, 19px);
-      border: 1px solid $color-border-gray;
-      user-select: none;
-      background-color: white;
-      transition: border-color 0.38s ease-in-out;
-      font-weight: 400;
+      background-color: transparent;
+      font-size: 20px;
+      text-transform: uppercase;
+      
 
       &:hover,
       &--active {
-        border-color: $color-text-purple;
+        color: $yellow;
       }
     }
 

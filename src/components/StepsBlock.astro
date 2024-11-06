@@ -23,7 +23,7 @@ const info: {title: string; text: string}[] = [
     <div class="stepsBlock">
         <div class="stepsBlock__left">
             <div class="stepsBlock__leftInfo">
-                <h4>Our care</h4>
+                <h4 class="uppercase">Our care</h4>
                 <h2 class="title">We prioritize your peace of mind.</h2>
                 {
                     info.slice(0, 2).map((item) => (
@@ -66,6 +66,9 @@ const info: {title: string; text: string}[] = [
     .stepsBlock{
         display: flex;
         gap: fluid(60px, 144px);
+        justify-content: center;
+        counter-reset: step;
+        margin-bottom: 160px;
         & > * {
             display: flex;
             flex-direction: column;
@@ -95,9 +98,19 @@ const info: {title: string; text: string}[] = [
                     z-index: -1;
                 }
             }
+            &Info{
+                h4{
+                    margin-bottom: 16px;
+                }
+                .title{
+                    max-width: 425px;
+                    margin-bottom: 40px;
+                }
+            }
         }
         &__right{
             &Img{
+                margin-bottom: 40px;
                 &-img{
                     width: 597px;
                     height: 485px;
@@ -107,13 +120,30 @@ const info: {title: string; text: string}[] = [
                     right: 5px;
                 }
             }
+            &Info{
+                margin-left: auto;
+                margin-right: 47px;
+            }
         }
         &__step{
+            margin-bottom: 32px;
             &-title{
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+                text-transform: uppercase;
+                font-size: 20px;
+                margin-bottom: 16px;
                 &::before{
                     content: counter(step);
-                    counter-reset: step;
+                    counter-increment: step;
+                    font-family: 'Northwell';
+                    font-size: 40px;
+                    line-height: 1;
                 }
+            }
+            p{
+                max-width: 360px;
             }
         }
     }
