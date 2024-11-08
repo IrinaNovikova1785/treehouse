@@ -1,0 +1,102 @@
+---
+import Section from "./Section.astro";
+
+---
+<Section>
+    <div class="sale">
+        <div class="sale__left">
+            <img src="/img/sale_vector.svg" alt="" class="sale__left-img"/>
+            <h2>25% off</h2>
+            <p>
+                Save yourself the headache of endless shopping with our 
+                Capsule Collection. Buy all 14 pieces, save 25%, and enjoy 
+                endless outfit options, dressing your littles in no time!
+            </p>
+            <div class="sale__buttons">
+                <a href="#" class="button button--undefined button--undefined">
+                    SHOP NOW
+                </a>
+                <a href="#" class="button button--undefined button--round">
+                    <span class="button__icon icon-arrow"></span>
+                </a>
+            </div>
+            <img src="/img/sale_2.png" alt="" class="sale__left-absolute"/>
+        </div>
+        <img src="/img/sale_1.png" alt="" class="sale__right"/>
+        <div class="sale__bottom">
+            <p class="uppercase">
+                The entire collection has a gender-neutral style and every item matches perfectly with the next.
+            </p>
+        </div>
+    </div>
+</Section>
+
+<style is:global lang="scss">
+    .sale{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 25px;
+        margin-bottom: 160px;
+        & > *{
+            width: 50%;
+        }
+        &__left, &__right{
+            width: 100%;
+        }
+        &__left{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: $greyBlue;
+            padding: 38px;
+            padding-bottom: 163px;
+            color: $white;
+            h2{
+                font-family: 'Northwell';
+                font-size: fluid(52px, 64px);
+                margin-bottom: 12px;
+            }
+            &-img{
+                margin-bottom: 23px;
+            }
+            &-absolute{
+                position: absolute;
+                left: 50%;
+                bottom: -150px;
+                translate: -50% 0;
+                object-fit: cover;
+                width: 280px;
+                height: 256px;
+            }
+            p{
+                max-width: 301px;
+                text-align: center;
+                margin-bottom: 48px;
+            }
+        }
+        &__right{
+            object-fit: cover;
+        }
+        &__buttons{
+            display: flex;
+            align-items: center;
+        }
+        &__bottom{
+            display: flex;
+            align-items: flex-start;
+            grid-column: span 2;
+            margin-left: auto;
+            &::before{
+                content: '*';
+                font-family: 'Northwell';
+                font-size: fluid(100px, 140px);
+                color: $yellow;
+                line-height: 1;
+            }
+            p{
+                max-width: 415px;
+            }
+        }
+    }
+</style>

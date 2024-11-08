@@ -1,0 +1,26 @@
+---
+import Section from "./Section.astro";
+
+--- 
+<Section>
+    <div class="buyLess">
+        <img src="/img/buyLess_boy.svg" alt="">
+        <div class="buyLess__title uppercase">Buy less, buy better</div>
+    </div>
+</Section>
+
+<style is:global lang="scss">
+    .buyLess{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        &__title{
+            font-size: fluid(78px, 100px);
+        }
+        img{
+            position: absolute;
+            top: -108px;
+            left: 32%;
+        }
+    }
+</style>

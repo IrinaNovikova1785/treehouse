@@ -40,6 +40,7 @@ const tabsImg = [
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 160px;
         .title{
             margin-bottom: 40px;
         }
@@ -81,7 +82,24 @@ const tabsImg = [
                         background-size: contain;
                     }
                 }
+                &:nth-child(2){
+                    &::after{
+                        left: -21%;
+                        top: -60%;
+                        width: 140%;
+                        height: 70px;
+                    }
+                }
+                &:last-child{
+                    &::after{
+                        left: -13%;
+                        top: -70%;
+                        width: 153%;
+                        height: 70px;
+                    }
+                }
             }
         }
     }
+
 </style>
