@@ -1,0 +1,61 @@
+---
+interface MiniCard{
+    img: string,
+    title: string,
+    sizes?: number[],
+    price?: string,
+}
+interface Props{
+    img: string,
+    title: string,
+    miniCard: MiniCard[],
+    swiper?: boolean,
+}
+
+const {img, title, miniCard, swiper} = Astro.props;
+
+const sizes = ['2-3', '3-4', '4-5', '5-6', '6-7', '7-8', '8-9', '9-10'];
+---
+
+<div class:list={['swiperMainCard', {'swiper-slide': swiper}]}>
+    <div class="swiperMainCard__imgWrap">
+        <img src={img} alt="" class="swiperMainCard__img">
+        <div class="swiperMainCard__desribe">
+            {
+                miniCard.map(card => (
+                    <img src={card.img} alt={}/>
+                    <div class="swiperMainCard__descrip">
+                        <div class="swiperMainCard__descrip-title">{card.title}</div>
+                    </div>
+                    <div class="swiperMainCard__sizePrice">
+                        {
+                            card.sizes && 
+                            <div class="swiperMainCard__size icon-arrow">
+                                {
+                                    sizes.map(item => (
+                                        <div class="swiperMainCard__size">{item}</div>
+                                    ))
+                                }
+                                <p>years</p>
+                            </div>
+                        }
+                        {
+                            card.price && <div class="swiperMainCard__price">{card.price} USD</div>
+                        }
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+    <div class="swiperMainCard__title">{title}</div>
+    <a href="#" class="icon-arrow uppercase">view products</a>
+</div>
+
+<style is:global lang="scss">
+    .swiperMainCard{
+        &__img{
+            object-fit: cover;
+            height: 380px;
+        }
+    }
+</style>

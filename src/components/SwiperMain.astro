@@ -1,0 +1,137 @@
+---
+import Section from "./Section.astro";
+import SwiperMainCard from "./SwiperMainCard.astro";
+
+
+const swiperCard = [
+    {
+        img: '/img/swiperMain_1.png',
+        title: 'Сozy chic for the playground',
+        miniCard: [
+            {
+                img:'/img/swiperMain_mini1.png',
+                title: 'T-shirt Hamra Trees Navy',
+                sizes: [0, 1, 2, 3],
+            },
+            {
+                img:'/img/swiperMain_mini2.png',
+                title: 'T-shirt Hamra Trees Navy',
+                price: '35.00',
+            },
+        ],
+        swiper: true,
+    },
+    {
+        img: '/img/swiperMain_2.png',
+        title: 'Effortless Beach Style',
+        miniCard: [
+            {
+                img:'/img/swiperMain_mini1.png',
+                title: 'T-shirt Hamra Trees Navy',
+                sizes: [0, 1, 2, 3],
+            },
+            {
+                img:'/img/swiperMain_mini2.png',
+                title: 'T-shirt Hamra Trees Navy',
+                price: '35.00',
+            },
+        ],
+        swiper: true,
+    },
+]
+---
+<div class="swiperMain">
+    <Section>
+        <h4 class="uppercase">your perfect match</h4>
+        <div class="swiperMain__title title">
+            Shop the look
+            <div class="swiperMain__navigation">
+                <div class="swiperMain__prev swiper-button-prev icon-arrow"></div>
+                <div class="swiperMain__next swiper-button-next icon-arrow"></div>
+            </div>
+        </div>
+        <div class="swiperMain__swiper swiper">
+            <div class="swiper-wrapper">
+                {
+                    swiperCard.map(card => (
+                        <SwiperMainCard img={card.img} title={card.title} miniCard={card.miniCard} swiper={card.swiper}/>
+                    ))
+                }
+            </div>
+        </div>
+    </Section>
+    <div class="swiperMain__after">
+        <div class="scene">
+            <img src="/img/swiperMain_prlx.svg" alt=""/>
+        </div>
+    </div>
+</div>
+
+<style is:global lang="scss">
+    .swiperMain{
+        position: relative;
+        margin-bottom: 160px;
+        h4{
+            margin-bottom: 16px;
+        }
+        &__navigation{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        &__title{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        &__next, &__prev{
+            position: relative;
+            background-color: $yellow;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            left: unset;
+            right: unset;
+            &::after{
+                content: '';
+                margin-top: 0;
+            }
+            &::before{
+                font-size: 23px;
+            }
+        }
+        &__prev{
+            &::before{
+                rotate: -180deg;
+            }
+        }
+        &__after{
+            position: absolute;
+            left: 0;
+            top: 50%;
+            // translate: 0 -50%;
+            width: 100%;
+            height: 100%;
+            background-color: #D9C7BB;
+            z-index: -1;
+            .scene{
+                position: absolute;
+                bottom: -103px;
+            }
+        }
+    }
+</style>
+
+<!-- <script>
+    var swiper = new Swiper(".swiperMain__swiper", {
+      pagination: {
+        el: ".swiper-pagination",
+        type: "progressbar",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script> -->
