@@ -1,0 +1,112 @@
+---
+import Section from "./Section.astro";
+
+---
+
+<div class="canTrust">
+    <Section>
+        <h4 class="uppercase">you can trust</h4>
+        <h2 class="title">Transparency in every detail</h2>
+        <div class="canTrust__wrapper">
+            <div class="canTrust__font">TreeHouse</div>
+            <img src="/img/canTr.png" alt="" class="canTrust__img">
+            <div class="scene">
+                <img src="/img/canTr_prlx2.svg" alt="" class="canTrust__child">
+            </div>
+        </div>
+        <div class="canTrust__buttons">
+            <a href="#" class="button button--undefined button--undefined">
+                SHOP NOW
+            </a>
+            <a href="#" class="button button--undefined button--round">
+                <span class="button__icon icon-arrow"></span>
+            </a>
+        </div>
+    </Section>
+    <div class="canTrust__vector scene">
+        <img src="/img/canTr_prlx.svg" alt="">
+    </div>
+</div>
+
+<style is:global lang="scss">
+    .canTrust{
+        position: relative;
+        margin-bottom: 160px;
+        &__vector{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &__buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &__font{
+            position: absolute;
+            left: -65px;
+            top: -15px;
+            rotate: -15deg;
+            font-family: 'Northwell';
+            color: $yellow;
+            font-size: 64px;
+            user-select: none;
+        }
+        &__child{
+            position: absolute;
+            right: -204px;
+            bottom: 0;
+        }
+        &__wrapper{
+            position: relative;
+            margin-bottom: 48px;
+        }
+        h4{
+            margin-bottom: 16px;
+        }
+        h2{
+            margin-bottom: 40px;
+        }
+        &__img{
+            object-fit: cover;
+            width: 597px;
+            height: 584px;
+        }
+        .section{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+</style>
+<!-- 
+<script>
+    var slide = document.getElementById('slide');
+    if(slide){
+        slide.onmousemove = function(e) {
+        slide.style.transition = '0s';
+        var curX = e.clientX;
+        var left = slide.offsetLeft;
+        var oldCurX = 10;
+        slide.onmousemove = function(e) {
+            if (slide.offsetLeft < 1 || e.clientX < oldCurX) {
+            oldCurX = e.clientX;
+            slide.style.left = left - (curX - e.clientX) + 'px';
+            }
+        }
+        slide.onmouseup = function(e) {
+            slide.style.transition = '0.2s';
+            slide.style.left = (oldCurX < curX) ? -slide.offsetWidth + 50 + 'px' : '0px';
+            slide.onmousemove = null;
+        }
+        }
+    }
+</script> -->

@@ -38,6 +38,57 @@ const swiperCard = [
         ],
         swiper: true,
     },
+    {
+        img: '/img/swiperMain_3.png',
+        title: 'Effortless Beach Style',
+        miniCard: [
+            {
+                img:'/img/swiperMain_mini3.png',
+                title: 'T-shirt Hamra Trees Navy',
+                sizes: [0, 1, 2, 3],
+            },
+            {
+                img:'/img/swiperMain_mini4.png',
+                title: 'T-shirt Hamra Trees Navy',
+                price: '35.00',
+            },
+        ],
+        swiper: true,
+    },
+    {
+        img: '/img/swiperMain_4.png',
+        title: 'Effortless Beach Style',
+        miniCard: [
+            {
+                img:'/img/swiperMain_mini3.png',
+                title: 'T-shirt Hamra Trees Navy',
+                sizes: [0, 1, 2, 3],
+            },
+            {
+                img:'/img/swiperMain_mini4.png',
+                title: 'T-shirt Hamra Trees Navy',
+                price: '35.00',
+            },
+        ],
+        swiper: true,
+    },
+    {
+        img: '/img/swiperMain_5.png',
+        title: 'Effortless Beach Style',
+        miniCard: [
+            {
+                img:'/img/swiperMain_mini3.png',
+                title: 'T-shirt Hamra Trees Navy',
+                sizes: [0, 1, 2, 3],
+            },
+            {
+                img:'/img/swiperMain_mini4.png',
+                title: 'T-shirt Hamra Trees Navy',
+                price: '35.00',
+            },
+        ],
+        swiper: true,
+    },
 ]
 ---
 <div class="swiperMain">
@@ -58,6 +109,7 @@ const swiperCard = [
                     ))
                 }
             </div>
+            <div class="swiperMain__pagination swiper-pagination"></div>
         </div>
     </Section>
     <div class="swiperMain__after">
@@ -70,7 +122,7 @@ const swiperCard = [
 <style is:global lang="scss">
     .swiperMain{
         position: relative;
-        margin-bottom: 160px;
+        margin-bottom: 260px;
         h4{
             margin-bottom: 16px;
         }
@@ -112,7 +164,7 @@ const swiperCard = [
             top: 50%;
             // translate: 0 -50%;
             width: 100%;
-            height: 100%;
+            height: 65%;
             background-color: #D9C7BB;
             z-index: -1;
             .scene{
@@ -120,18 +172,38 @@ const swiperCard = [
                 bottom: -103px;
             }
         }
+        &__swiper{
+            padding-bottom: 80px;
+        }
+        &__pagination{
+            top: unset !important;
+            left: 50% !important;
+            translate: -50% 0;
+            bottom: 0;
+            max-width: 460px;
+            background: #50735F4D;
+            .swiper-pagination-progressbar-fill{
+                background: $green;
+            }
+        }
     }
 </style>
 
-<!-- <script>
+<script>
+    import Swiper from "swiper";
+    import { Navigation, Pagination } from "swiper/modules";
+
     var swiper = new Swiper(".swiperMain__swiper", {
-      pagination: {
-        el: ".swiper-pagination",
-        type: "progressbar",
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
+        modules: [Navigation, Pagination],
+        slidesPerView: 3.2,
+        spaceBetween: 40,
+        pagination: {
+            el: ".swiperMain__pagination",
+            type: "progressbar",
+        },
+        navigation: {
+            nextEl: ".swiper-button-next", 
+            prevEl: ".swiper-button-prev",
+        },
     });
-  </script> -->
+</script>

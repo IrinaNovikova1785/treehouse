@@ -3,7 +3,7 @@ import Section from "@components/Section.astro";
 import Button from "@components/Button.astro";
 ---
 
-<div class="mainBanner">
+<div class="mainBanner" id="mainB">
     <div class="mainBanner__wrapper">
         <div class="mainBanner__background">
             <img src="/img/mainBanner.png" alt="">
@@ -25,7 +25,7 @@ import Button from "@components/Button.astro";
             </div>
             <div class="mainBanner__bottom">
                 <p>* Buy good, do good</p>
-                <a href="#" class="icon-arrow">
+                <a href="#footer" class="icon-arrow scrollDown">
                     Scroll
                 </a>
             </div>
@@ -111,3 +111,27 @@ import Button from "@components/Button.astro";
         }
     }
 </style>
+
+<script>
+import { i } from "build/js/bundle/navigation.16f12816";
+
+    let scrollDown = document.querySelector('scrollDown');
+
+    scrollDown?.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        let href = this.getAttribute('href').substring(1);
+        const scrollTarget = document.getElementById(href);
+
+        const topOffset = document.querySelector('.scrollto')?.offsetHeight;
+        const elementPosition = scrollTarget?.getBoundingClientRect().top;
+        if(elementPosition && topOffset){
+            const offsetPosition = elementPosition - topOffset;
+        }
+
+        window.scrollBy({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    })
+</script>

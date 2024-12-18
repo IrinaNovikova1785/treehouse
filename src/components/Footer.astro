@@ -1,4 +1,7 @@
 ---
+import Button from "./Button.astro";
+import Section from "./Section.astro";
+
 const menuCol1: string[] = [
   "Каталог",
   "iPhone",
@@ -21,92 +24,180 @@ const menuCol2: string[] = [
 ];
 
 const menuCol3: string[] = ["Распродажа"];
+
+const footerData: {title: string, menuCol: string[]}[] = [
+  {
+    title: 'SITEMAP',
+    menuCol: [
+      'Shop',
+      'Meet us',
+      'Our impact',
+      'Gift cards',
+      'FAQ',
+      'Blog',
+      'Contacts',
+    ]
+  },
+  {
+    title: 'SOCIAL',
+    menuCol: [
+      'Instagram',
+      'Facebook',
+      'Pinterest',
+    ]
+  },
+  {
+    title: 'CUSTOMER CARE',
+    menuCol: [
+      'Terms & Conditions',
+      'Privacy Policy',
+      'Delivery & return',
+      'Track your order',
+      'FAQ',
+    ]
+  },
+]
 ---
 
-<footer class="footer section">
-  <div class="footer__container">
-    <div class="footer__nav">
-      <ul class="footer__menu">
-        {
-          menuCol1.map((item) => (
-            <li>
-              <a href="#">{item}</a>
-            </li>
-          ))
-        }
-      </ul>
-      <ul class="footer__menu">
-        {
-          menuCol2.map((item) => (
-            <li>
-              <a href="#">{item}</a>
-            </li>
-          ))
-        }
-      </ul>
-      <ul class="footer__menu">
-        {
-          menuCol3.map((item) => (
-            <li>
-              <a href="#">{item}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <div class="footer__logo">
-      <img src="/img/logo.svg" />
-      APP-ROOM
-    </div>
-    <div class="footer__copy">
-      © 2011 - 2024 Магазин цифровой техники App-Room
-    </div>
-    <a href="https://spaceapp.ru/" class="footer__dev">
-      Разработка сайта 
-    </a>
-    <div class="footer__contact">
-      <div class="footer__questions">
-        <a class="footer__phone" href="tel:+78452253835">8 (8452) 25-38-35</a>
-        <a href="mailto:applesaratov@yandex.ru" class="footer__email"
-          >applesaratov@yandex.ru</a
-        >
-        <a href="#" class="footer__button"> Остались вопросы? </a>
+<footer class="footer" id='footer'>
+  <Section>
+    <div class="footer__wrapper">
+      <div class="footer__left">
+        <h4 class="uppercase">subscribe to our mailing list<br> and get 15% off your first order</h4>
+        <form class="footer__form">
+          <input type="text" name="" id="" placeholder="Enter your email">
+          <Button variant="submit">I’m in</Button>
+        </form>
+        <div class="footer__logo">
+          <img src="/img/logo.svg" />
+        </div>
+        <div class="footer__copy">
+          Tree House 2023 © All Rights reserved
+        </div>
       </div>
-      <div class="footer__column">
-        <p class="footer__text">Адрес</p>
-        <p class="footer__text">г. Саратов, ул. Слонова, 42/48</p>
-        <a href="#" class="footer__map">Карта сайта</a>
-      </div>
-      <div class="footer__column">
-        <p class="footer__text">Режим работы</p>
-        <p class="footer__time">
-          <span> пн-пт 10:00 - 20:00 </span>
-          <span> сб-вс 10:00 - 18:00 </span>
-        </p>
-      </div>
-      <div class="footer__social">
-        <p class="footer__text">Мы на связи</p>
-        <a
-          href="https://vk.com/public211718859"
-          class="footer__icon icon-vk-box"></a>
+      <div class="footer__nav">
+        {footerData.map(({ title, menuCol }) => (
+          <ul class="footer__menu">
+            <h4>{title}</h4>
+            {menuCol.map((item) => (
+              <li><a href="#">{item}</a></li>
+            ))}
+          </ul>
+        ))}
+        <ul class="footer__menu">
+          <h4>PAYMENT METHODS</h4>
+          <li class="icon-paypal"></li>
+          <li class="icon-visa"></li>
+          <li class="icon-Google_Pay"></li>
+          <li class="icon-apple-pay"></li>
+          <li class="icon-Afterpay"></li>
+          <li class="icon-ShopPay"></li>
+        </ul>
       </div>
     </div>
+  <Section/>
+  <div class="footer__prlx1 scene">
+    <img src="/img/footer_prlx1.svg" alt="">
   </div>
+  <div class="footer__prlx2 scene">
+    <img src="/img/footer_prlx2.svg" alt="">
+  </div>
+  <div class="footer__prlx3 scene">
+    <img src="/img/footer_prlx3.svg" alt="">
+  </div>
+  <a href="#mainB" class="footer__scrollUp icon-arrow">
+    UP
+  </a>
 </footer>
 
 <style is:global lang="scss">
   .footer {
+    position: relative;
     order: 20;
     background-color: $green;
     color: white;
-    padding-top: fluid(30px, 36px);
-    padding-bottom: fluid(36px, 44px);
+    padding-top: fluid(36px, 45px);
+    padding-bottom: fluid(36px, 45px);
 
+    &__wrapper{
+      display: flex;
+      justify-content: space-between;
+      gap: 80px;
+    }
+
+    &__scrollUp{
+      position: absolute;
+      display: flex;
+      align-items: center;
+      right: 104px;
+      bottom: 34px;
+      cursor: pointer;
+      &::after{
+        content: '';
+        position: absolute;
+        left: -10%;
+        top: -33%;
+        width: 137%;
+        height: 50px;
+        background-image: url(/img/icon/tabWhite.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      &::before{
+        display: block;
+        font-size: 30px;
+        rotate: -90deg;
+      }
+    }
+
+    &__form{
+      display: flex;
+      margin-bottom: fluid(30px, 80px);
+      input{
+        width: 70%;
+        border: 1px solid rgba(255, 255, 255, .5);
+        background-color: transparent;
+        color: rgba(255, 255, 255, .5);
+        padding: 20px;
+        padding-right: 38px;
+        border-radius: 8px 0 0 8px;
+        &::placeholder{
+          color: rgba(255, 255, 255, .5);
+        }
+      }
+      .button{
+        width: 30%;
+        border-radius: 0 8px 8px 0;
+      }
+    }
+    &__left{
+      width: 30%;
+      h4{
+        max-width: 273px;
+        margin-bottom: 20px;
+      }
+    }
     &__icon {
       font-size: 30px;
       width: fit-content;
     }
-
+    &__prlx{
+      &1, &2, &3{
+        position: absolute;
+      }
+      &1{
+        top: 77px;
+        right: 0;
+      }
+      &2{
+        bottom: 0;
+        left: 32%;
+      }
+      &3{
+        top: 0;
+        left: 0;
+      }
+    }
     & a:not(&__button) {
       transition: color 0.38s ease-in-out;
       // &:hover {
@@ -133,51 +224,34 @@ const menuCol3: string[] = ["Распродажа"];
       }
     }
 
-    &__container {
-      grid-area: center;
-      display: grid;
-      grid-template-columns: auto 1fr auto minmax(auto, fluid(350px, 506px));
-      grid-template-rows: auto 1fr;
-      row-gap: fluid(30px, 50px);
-      grid-template-areas:
-        "nav nav nav contact"
-        "logo copy dev contact";
-    }
-
     &__nav {
-      margin-top: 6px;
-      grid-area: nav;
+      width: 60%;
       display: flex;
-      column-gap: fluid(100px, 154px);
-      row-gap: 20px;
-      text-transform: uppercase;
-      font-size: fluid(14px, 16px);
-      flex-wrap: wrap;
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      justify-content: start;
+      justify-content: center;
+      gap: fluid(40px, 60px);
     }
 
     &__menu {
       display: flex;
       flex-direction: column;
       gap: fluid(8px, 10px);
+      [class^="icon-"]{
+        font-size: 20px;
+      }
+      h4{
+        margin-bottom: 24px;
+        text-transform: uppercase;
+      }
+      li{
+        text-transform: initial;
+      }
     }
 
     &__logo {
-      align-self: center;
-      grid-area: logo;
-      font-size: fluid(21px, 24px);
-      font-weight: 500;
-      display: flex;
-      gap: 0.6em;
-      align-items: center;
-      margin-right: 20px;
-
-      img {
+      margin-bottom: 20px;
+      img{
+        width: 129px;
         object-fit: contain;
-        height: 2.35em;
-        width: auto;
       }
     }
 
@@ -534,3 +608,24 @@ const menuCol3: string[] = ["Распродажа"];
     }
   }
 </style>
+
+<script>
+  let scrollUp = document.querySelector('footer__scrollUp');
+  scrollUp?.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    let href = this.getAttribute('href').substring(1);
+    const scrollTarget = document.getElementById(href);
+
+    const topOffset = document.querySelector('.scrollto')?.offsetHeight;
+    const elementPosition = scrollTarget?.getBoundingClientRect().bottom;
+    if(elementPosition && topOffset){
+      const offsetPosition = elementPosition - topOffset;
+    }
+
+    window.scrollBy({
+        top: offsetPosition,
+        behavior: 'smooth'
+    });
+  })
+</script>
