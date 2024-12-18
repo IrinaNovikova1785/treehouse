@@ -195,8 +195,6 @@ const swiperCard = [
 
     var swiper = new Swiper(".swiperMain__swiper", {
         modules: [Navigation, Pagination],
-        slidesPerView: 3.2,
-        spaceBetween: 40,
         pagination: {
             el: ".swiperMain__pagination",
             type: "progressbar",
@@ -205,5 +203,27 @@ const swiperCard = [
             nextEl: ".swiper-button-next", 
             prevEl: ".swiper-button-prev",
         },
+        breakpoints: {
+            1250:{
+                spaceBetween: 40,
+                slidesPerView: 3.2,
+            }, 
+            1100:{
+                spaceBetween: 20,
+                slidesPerView: 2.8,
+            },
+            993:{
+                spaceBetween: 20,
+                slidesPerView: 2.5,
+            },
+            576:{
+                spaceBetween: 20,
+                slidesPerView: 2.2,
+            },
+            0:{
+                spaceBetween: 10,
+                slidesPerView: 1.2,
+            },
+        }
     });
 </script>

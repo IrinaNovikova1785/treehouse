@@ -614,18 +614,23 @@ const footerData: {title: string, menuCol: string[]}[] = [
   scrollUp?.addEventListener('click', (e) => {
     e.preventDefault();
     
-    let href = this.getAttribute('href').substring(1);
-    const scrollTarget = document.getElementById(href);
-
-    const topOffset = document.querySelector('.scrollto')?.offsetHeight;
-    const elementPosition = scrollTarget?.getBoundingClientRect().bottom;
-    if(elementPosition && topOffset){
-      const offsetPosition = elementPosition - topOffset;
+    let href = scrollUp.getAttribute('href')?.substring(1);
+    if(href){
+      let scrollTarget = document.getElementById(href);
+      let scrollTo = document.querySelector('.scrollto');
+  
+      if(scrollTo && scrollTo instanceof HTMLElement){
+        let topOffset = scrollTo.offsetHeight;
+        let elementPosition = scrollTarget?.getBoundingClientRect().bottom;
+  
+        if(elementPosition && topOffset){
+          let offsetPosition = elementPosition - topOffset;
+          window.scrollBy({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
     }
-
-    window.scrollBy({
-        top: offsetPosition,
-        behavior: 'smooth'
-    });
   })
 </script>

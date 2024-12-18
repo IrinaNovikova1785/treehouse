@@ -147,4 +147,20 @@ const info: {title: string; text: string}[] = [
             }
         }
     }
+
+    @media (max-width: 992px) {
+        .stepsBlock{
+            &__right{
+                &Info{
+                    margin-right: 0;
+                }
+                &Img{
+                    &-img{
+                        width: 370px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
 </style>

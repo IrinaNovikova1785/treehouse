@@ -1,0 +1,115 @@
+---
+---
+
+<div class="burger">
+    <div class="burger__btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<style is:global lang="scss">
+    @keyframes bottom{
+        0% {
+            bottom: 0;
+            transform: rotate(0);
+        }
+        50% {
+            bottom: 22px;
+            transform: rotate(0);
+        }
+        100% {
+            bottom: 22px;
+            transform: rotate(135deg);
+        }
+    }
+    @keyframes top{
+        0% {
+            top: 0;
+            transform: rotate(0);
+        }
+        50% {
+            top: 22px;
+            transform: rotate(0);
+        }
+        100% {
+            top: 22px;
+            transform: rotate(45deg);
+        }
+    }
+    @keyframes scaled{
+        50% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(0);
+        }
+    }
+    .burger{
+        display: none;
+        width: 35px;
+        height: auto;
+        &__btn{
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            span{
+                position: relative;
+                display: block;
+                width: 100%;
+                height: 3px;
+                background: #fff;
+                transition: all .3s;
+                border-radius: 3px;
+                & + span{
+                    margin-top: 4px;
+                }
+                &:last-child{
+                    width: 60%;
+                    margin-left: auto;
+                }
+            }
+        }
+        &.active{
+            .burger__btn{
+                span{
+                    &:nth-child(1){
+                        animation: ease .7s top forwards;
+                    }
+                    &:nth-child(2){
+                        animation: ease .7s scaled forwards;
+                    }
+                    &:nth-child(3){
+                        margin-top: 34px;
+                        width: 100%;
+                        animation: ease .7s bottom forwards;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 992px) {
+        .burger{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+</style>
+
+<script>
+    let burger = document.querySelector('.burger');
+    
+    burger?.addEventListener('click', () => {
+        let nav = document.querySelector('.header__navigation');
+        burger.classList.toggle('active');
+        nav?.classList.toggle('active');
+        document.body?.classList.toggle('shadow');
+        if (document.body.style.overflow !== 'hidden') {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'visible'
+        }
+    })
+</script>

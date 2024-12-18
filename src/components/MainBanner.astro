@@ -3,7 +3,7 @@ import Section from "@components/Section.astro";
 import Button from "@components/Button.astro";
 ---
 
-<div class="mainBanner" id="mainB">
+<section class="mainBanner" id="mainB">
     <div class="mainBanner__wrapper">
         <div class="mainBanner__background">
             <img src="/img/mainBanner.png" alt="">
@@ -31,11 +31,11 @@ import Button from "@components/Button.astro";
             </div>
         </Section>
     </div>
-</div>
+</section>
 <style is:global lang="scss">
     .mainBanner{
         position: relative;
-        min-height: 700px;
+        min-height: fluid(700px, 540px);
         padding-top: 80px;
         margin-bottom: 120px;
         &__background{;
@@ -113,25 +113,28 @@ import Button from "@components/Button.astro";
 </style>
 
 <script>
-import { i } from "build/js/bundle/navigation.16f12816";
-
     let scrollDown = document.querySelector('scrollDown');
 
     scrollDown?.addEventListener('click', (e) => {
         e.preventDefault();
         
-        let href = this.getAttribute('href').substring(1);
-        const scrollTarget = document.getElementById(href);
+        let href = scrollDown.getAttribute('href')?.substring(1);
+        if(href){
+            const scrollTarget = document.getElementById(href);
+            let scrollTo = document.querySelector('.scrollto');
 
-        const topOffset = document.querySelector('.scrollto')?.offsetHeight;
-        const elementPosition = scrollTarget?.getBoundingClientRect().top;
-        if(elementPosition && topOffset){
-            const offsetPosition = elementPosition - topOffset;
+            if(scrollTo && scrollTo instanceof HTMLElement){
+                const topOffset = scrollTo.offsetHeight;
+                const elementPosition = scrollTarget?.getBoundingClientRect().top;
+
+                if(elementPosition && topOffset){
+                    const offsetPosition = elementPosition - topOffset;
+                    window.scrollBy({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
         }
-
-        window.scrollBy({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
     })
 </script>
