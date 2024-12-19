@@ -77,6 +77,7 @@ import Section from "./Section.astro";
         }
         &__right{
             object-fit: cover;
+            height: 100%;
         }
         &__buttons{
             display: flex;
@@ -97,6 +98,45 @@ import Section from "./Section.astro";
             p{
                 max-width: 415px;
             }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .sale{
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 80px;
+            &__bottom{
+                margin-top: 30px;
+            }
+            &__right{
+                height: 530px;
+            }
+            &__left{
+                padding-bottom: 80px;
+                &-absolute{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .sale{
+            &__left{
+                padding: 25px;
+                padding-bottom: 45px;
+                p{
+                    margin-bottom: 25px;
+                }
+            }
+            &__right{
+                height: 400px;
+            }
+            &__bottom{
+                width: 65%;
+            } 
         }
     }
 </style>

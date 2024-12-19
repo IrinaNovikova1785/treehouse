@@ -40,8 +40,8 @@ $greyBlue: #ADBBC4;
 
 @function fluid($min-size,
   $max-size,
-  $min-breakpoint: 1024px,
-  $max-breakpoint: 1600px,
+  $min-breakpoint: 992px,
+  $max-breakpoint: 1920px,
   $unit: vw) {
   $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
   $slope-to-unit: round($slope * 100, 3);

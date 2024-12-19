@@ -83,31 +83,18 @@ const { items, open } = Astro.props;
       gap: fluid(15px, 30px);
     }
   }
-
-  @media (max-width: 992px) {
-    .tab {
-      &__list {
-        gap: 8px;
+  @media (max-width: 768px) {
+    .tab{
+      &__item{
+        font-size: 18px;
       }
+    }
+  }
 
-      &--options &__header {
-        flex-direction: column-reverse;
-        justify-content: unset;
-      }
-
-      &__item {
-        &:hover:not(&--active) {
-        }
-        &--active {
-        }
-      }
-
-      &__container {
-      }
-
-      &__content {
-        &--active {
-        }
+  @media (max-width: 576px) {
+    .tab{
+      &__list{
+        justify-content: center;
       }
     }
   }

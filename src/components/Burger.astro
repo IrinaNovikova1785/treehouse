@@ -100,16 +100,27 @@
 
 <script>
     let burger = document.querySelector('.burger');
-    
+    let nav = document.querySelector('.header__navigation');
+
     burger?.addEventListener('click', () => {
-        let nav = document.querySelector('.header__navigation');
         burger.classList.toggle('active');
         nav?.classList.toggle('active');
         document.body?.classList.toggle('shadow');
-        if (document.body.style.overflow !== 'hidden') {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = 'visible'
+        document.body.style.overflow = document.body.style.overflow !== 'hidden' ? 'hidden' : 'visible';
+    });
+
+    let li = document.querySelectorAll('.header__navigation > ul > li');
+
+    document.addEventListener('click', (e) => {
+        let target = e.target as HTMLElement | null;
+        let isClickInsideNav = Array.from(li).some(element => element.contains(target));
+        let isClickInsideBurger = burger?.contains(target);
+
+        if (!isClickInsideNav && !isClickInsideBurger) {
+            burger?.classList.remove('active');
+            nav?.classList.remove('active');
+            document.body?.classList.remove('shadow');
+            document.body.style.overflow = 'visible';
         }
-    })
+    });
 </script>

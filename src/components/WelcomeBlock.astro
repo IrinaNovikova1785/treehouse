@@ -37,7 +37,7 @@ import Button from "@components/Button.astro";
         gap: 40px;
         align-items: center;
         justify-content: center;
-        margin-bottom: 200px;
+        margin-bottom: fluid(170px, 200px);
         &__left{
             position: relative;
             display: flex;
@@ -84,6 +84,62 @@ import Button from "@components/Button.astro";
         &__buttons{
             display: flex;
             align-items: center;
+        }
+    }
+
+    @media (max-width: 810px) {
+        .welcomeBlock{
+            flex-direction: column;
+            gap: 100px;
+            margin-bottom: 60px;
+            &__img{
+                &:first-of-type{
+                    height: auto;
+                    width: 150px;
+                }
+                &:nth-child(2){
+                    height: auto;
+                    width: 310px;
+                }
+            }
+        }
+    }
+    @media (max-width: 490px) {
+        .welcomeBlock{
+            gap: 120px;
+            &__img{
+                &:first-of-type{
+                    width: 130px;
+                }
+                &:nth-child(2){
+                    width: 260px;
+                }
+            }
+            &__right{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 100%;
+            }
+        }
+    }
+    @media (max-width: 420px) {
+        .welcomeBlock{
+            gap: 120px;
+            &__prlx{
+                &.two{
+                    top: -55px;
+                    left: -30px;
+                }
+            }
+            &__img{
+                &:first-of-type{
+                    width: 120px;
+                }
+                &:nth-child(2){
+                    width: 220px;
+                }
+            }
         }
     }
 </style>

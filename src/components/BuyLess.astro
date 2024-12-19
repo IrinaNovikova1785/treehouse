@@ -14,14 +14,37 @@ import Section from "./Section.astro";
         position: relative;
         display: flex;
         justify-content: center;
-        margin-bottom: 160px;
+        margin-bottom: fluid(80px, 160px);
         &__title{
-            font-size: fluid(78px, 100px);
+            font-size: fluid(68px, 100px);
+            line-height: 1.3;
+            text-align: center;
         }
         img{
             position: absolute;
-            top: -108px;
+            top: -116px;
             left: 32%;
+            width: fluid(140px, 152px);
+            height: auto;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .buyLess{
+            img{
+                left: 25%;
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        .buyLess{
+            &__title{
+                font-size: 52px;
+            }
+            img{
+                width: 120px;
+                top: -100px;
+            }
         }
     }
 </style>

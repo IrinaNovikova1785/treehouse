@@ -97,13 +97,13 @@ const footerData: {title: string, menuCol: string[]}[] = [
     </div>
   <Section/>
   <div class="footer__prlx1 scene">
-    <img src="/img/footer_prlx1.svg" alt="">
+    <img src="/img/footer_prlx1.svg" alt="" data-depth="0.2">
   </div>
   <div class="footer__prlx2 scene">
-    <img src="/img/footer_prlx2.svg" alt="">
+    <img src="/img/footer_prlx2.svg" alt="" data-depth="0.2">
   </div>
   <div class="footer__prlx3 scene">
-    <img src="/img/footer_prlx3.svg" alt="">
+    <img src="/img/footer_prlx3.svg" alt="" data-depth="0.2">
   </div>
   <a href="#mainB" class="footer__scrollUp icon-arrow">
     UP
@@ -168,6 +168,7 @@ const footerData: {title: string, menuCol: string[]}[] = [
       .button{
         width: 30%;
         border-radius: 0 8px 8px 0;
+        padding: 15px 20px;
       }
     }
     &__left{
@@ -344,266 +345,51 @@ const footerData: {title: string, menuCol: string[]}[] = [
     }
   }
 
-  @media (max-width: 1400px) {
-    .footer {
-      padding-bottom: 20px;
-      &__button {
-      }
-
-      &__container {
-        row-gap: 1rem;
-        grid-template-columns: auto 1fr minmax(auto, fluid(350px, 506px));
-        grid-template-rows: auto auto auto;
-        grid-template-areas:
-          "nav nav  contact"
-          "logo logo contact"
-          "copy dev contact";
-      }
-
-      &__nav {
-      }
-
-      &__menu {
-      }
-
-      &__logo {
-      }
-
-      &__copy {
-      }
-
-      &__dev {
-      }
-
-      &__contact {
-      }
-
-      &__column {
-      }
-
-      &__questions {
-      }
-
-      &__text {
-      }
-
-      &__time {
-      }
-
-      &__phone {
-      }
-
-      &__email {
-      }
-
-      &__social {
-      }
-    }
-  }
-
   @media (max-width: 992px) {
     .footer {
-      &__button {
+      &__wrapper{
+        gap: 30px;
+        flex-direction: column-reverse;
       }
-
-      &__container {
-        grid-template-columns: auto 1fr minmax(auto, fluid(350px, 506px));
-        grid-template-rows: auto auto auto;
-        grid-template-areas:
-          "nav nav  contact"
-          "logo logo contact"
-          "copy copy contact"
-          "dev dev contact";
+      &__form{
+        width: 70%;
       }
-
-      &__nav {
-        grid-template-columns: repeat(2, auto);
-        grid-template-rows: auto 1fr;
-        row-gap: 8px;
+      &__nav{
+        justify-content: space-between;
       }
-
-      &__menu {
-        &:first-child {
-          grid-row: span 2;
+      &__left{
+        justify-content: flex-start;
+      }
+      &__nav, &__left{
+        width: 100%;
+      }
+      &__menu{
+        h4{
+          margin-bottom: 10px;
+          font-size: 16px;
         }
-      }
-
-      &__logo {
-      }
-
-      &__copy {
-      }
-
-      &__dev {
-        justify-self: start;
-        margin-top: -10px;
-      }
-
-      &__contact {
-      }
-
-      &__column {
-      }
-
-      &__questions {
-      }
-
-      &__text {
-      }
-
-      &__time {
-      }
-
-      &__phone {
-      }
-
-      &__email {
-      }
-
-      &__social {
+        li{
+          font-size: 16px;
+        }
+        [class^=icon-]{
+          font-size: 24px;
+        }
       }
     }
   }
 
   @media (max-width: 768px) {
-    .footer {
-      &__button {
+    .footer{
+      &__scrollUp{
+        right: 50px;
+        bottom: 95px;
       }
-
-      &__container {
-        justify-content: center;
-        row-gap: 25px;
-        grid-template-columns: 100%;
-        grid-template-rows: unset;
-        grid-template-areas:
-          "logo"
-          "nav"
-          "contact"
-          "copy"
-          "dev";
-      }
-
-      &__nav {
-        margin: unset;
-        justify-content: space-between;
-        column-gap: 2rem;
-        text-transform: unset;
+      &__nav{
         flex-wrap: wrap;
-        grid-template-columns: repeat(3, auto);
-      }
-
-      &__menu {
-      }
-
-      &__logo {
-      }
-
-      &__copy {
-        line-height: 1.25;
-        text-align: center;
-      }
-
-      &__dev {
-        justify-self: center;
-        margin-top: -15px;
-        font-size: 16px;
-      }
-
-      &__contact {
-        grid-row: unset;
-        padding: unset;
-        border: unset;
-        border-top: 1px solid white;
-        border-bottom: 1px solid white;
-        padding-top: 25px;
-        padding-bottom: 25px;
-        row-gap: 25px;
-      }
-
-      &__column {
-        grid-column: span 2;
-      }
-
-      &__questions {
-      }
-
-      &__text {
-      }
-
-      &__time {
-      }
-
-      &__phone {
-      }
-
-      &__email {
-      }
-
-      &__social {
-        grid-area: 1 / 2 / 2 / 3;
-        line-height: 1;
-        justify-self: end;
-        gap: 10px;
-
-        a {
-          margin-left: auto;
+        gap: 20px;
+        ul{
+          width: calc(50% - 20px);
         }
-      }
-    }
-  }
-
-  @media (max-width: 576px) {
-    .footer {
-      &__button {
-      }
-
-      &__container {
-        grid-template-columns: auto;
-        justify-content: unset;
-      }
-
-      &__nav {
-        justify-content: unset;
-        column-gap: 30%;
-        grid-template-columns: repeat(2, auto);
-      }
-
-      &__menu {
-      }
-
-      &__logo {
-      }
-
-      &__copy {
-      }
-
-      &__dev {
-      }
-
-      &__contact {
-      }
-
-      &__column {
-        gap: 4px;
-      }
-
-      &__questions {
-      }
-
-      &__text {
-      }
-
-      &__time {
-      }
-
-      &__phone {
-      }
-
-      &__email {
-        margin-bottom: 6px;
-      }
-
-      &__social {
       }
     }
   }

@@ -1,5 +1,5 @@
 .section {
-  --container-width: 1230px;
+  --container-width: 1560px;
   display: grid;
   grid-template-columns: [full-start left-start] minmax(15px, 1fr) [right-start center-start] minmax(0, var(--container-width)) [left-end center-end] minmax(15px, 1fr) [full-end right-end];
   grid-template-rows: [full-start left-start center-start right-start] auto [full-end left-end center-end right-end];

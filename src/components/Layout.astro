@@ -244,10 +244,14 @@ const version = String(Date.now()).substring(5);
   //@ts-ignore
   import Parallax from 'parallax-js';
 
-  var scenes = document.querySelectorAll('scene');
-
-  scenes.forEach(scene => {
-    var parallaxInstance = new Parallax(scene);
-    // parallaxInstance.friction(0.2, 0.2);
+  document.addEventListener('DOMContentLoaded', function() {
+    var scenes = document.querySelectorAll('.scene');
+    scenes.forEach(scene => {
+      var parallaxInstance = new Parallax(scene, {
+        relativeInput: true,
+        hoverOnly: true
+      });
+      // parallaxInstance.friction(0.2, 0.2);
+    });
   });
 </script>

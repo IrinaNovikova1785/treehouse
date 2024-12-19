@@ -35,9 +35,9 @@ import Button from "@components/Button.astro";
 <style is:global lang="scss">
     .mainBanner{
         position: relative;
-        min-height: fluid(700px, 540px);
+        min-height: fluid(570px, 700px);
         padding-top: 80px;
-        margin-bottom: 120px;
+        margin-bottom: fluid(60px, 120px);
         &__background{;
             img, &::after{
                 position: absolute;
@@ -84,7 +84,7 @@ import Button from "@components/Button.astro";
             align-items: center;
             justify-content: space-between;
             color: $white;
-            margin-top: 102px;
+            margin-top: fluid(40px, 102px);
             a{
                 display: flex;
                 align-items: center;
@@ -107,6 +107,17 @@ import Button from "@components/Button.astro";
                 display: flex;
                 flex-direction: column;
                 height: 100%;
+            }
+        }
+    }
+    @media (max-width: 490px) {
+        .mainBanner{
+            &__info{
+                h1{
+                    &:last-of-type{
+                        margin-left: 75px; 
+                    }
+                }
             }
         }
     }
