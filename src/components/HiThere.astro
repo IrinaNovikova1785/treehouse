@@ -1,0 +1,113 @@
+---
+import Section from "./Section.astro";
+
+---
+
+<Section>
+    <div class="hiThere">
+        <img src="/img/hi.png" alt="" class="hiThere__img">
+        <div class="hiThere__wrapper">
+            <div class="hiThere__prlx scene">
+                <img src="/img/hi_prlx.svg" data-depth="0.6" alt="">
+            </div>
+            <h2 class="title">Hi there!</h2>
+            <h4 class="uppercase">just some information about</h4>
+            <div class="hiThere__title">
+                <div class="hiThere__short">short</div>
+                <div class="hiThere__title-text">
+                    <h1 class="title">Who we are.</h1>
+                    <h2 class="title">Our vision.</h2>
+                    <h2 class="title">Our mission.</h2>
+                </div>
+            </div>
+            <p>
+                Created by Anastasia, a mom with a passion for progress, sustainability and ethics. Treehouse is not 
+                just about timeless and whimsical style but it also serves a deeper purpose, one focused on doing 
+                better for our planet, our society and our children.
+            </p>
+            <p>
+                We are passionate about empowering parents to make informed clothing choices for their families. We 
+                believe that a collective move towards more sustainable practices is the only way to shift the landscape 
+                of traditional fashion.
+            </p>
+        </div>
+    </div>
+</Section>
+
+<style lang="scss" is:global>
+    .hiThere{
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: fluid(30px, 40px);
+        margin-top: fluid(60px, 100px);
+        margin-bottom: fluid(90px, 185px);
+        &__wrapper{
+        }
+        &__img{
+            object-fit: cover;
+            height: fluid(480px, 604px);
+            width: auto;
+        }
+        &__prlx{
+            position: absolute;
+            top: -30px;
+            right: -7px;
+        }
+        &__short{
+            position: relative;
+            font-family: "Northwell";
+            rotate: -15deg;
+            font-size: fluid(34px, 48px);
+            color: $yellow;
+            width: 154px;
+            &::before, &::after{
+                content: '';
+                position: absolute;
+                background-repeat: no-repeat;
+            }
+            &::before{
+                background-image: url('/img/short_1.svg');
+                translate: -30% -30%;
+                width: 100%;
+                height: 130px;
+            }
+            &::after{
+                background-image: url('/img/short_arr.svg');
+                width: 90px;
+                height: 59px;
+                top: -65px;
+                right: -55px;
+            }
+        }
+        &__title{
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            margin-left: 128px;
+            &-text{
+                h2{
+                    &:first-of-type{
+                        // margin-left: fluid(-15px, -38px);
+                        margin-left: -38px;
+                    }
+                    &:last-of-type{
+                        margin-bottom: 32px;
+                    }
+                }
+            }
+        }
+        p{
+            max-width: 385px;
+            &:first-of-type{
+                margin-bottom: 16px;
+            }
+        }
+        .title{
+            margin-bottom: 16px;
+        }
+        .uppercase{
+            margin-bottom: 22px;
+        }
+    }
+</style>

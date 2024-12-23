@@ -1,0 +1,61 @@
+---
+import Section from "./Section.astro";
+
+---
+<Section>
+    <div class="scrap">
+        <div class="scrap__wrapper">
+            <img src="/img/scrap.png" alt="">
+            <p>
+                We're committed to creating a non-judgmental space where you can 
+                explore the world of slow fashion. Our goal is to support you every 
+                step of the way, answering any questions and working together towards 
+                collective change
+            </p>
+        </div>
+        <div class="scrap__prlx1 scene">
+            <img src="/img/swiperMain_prlx.svg" data-depth="0.6" alt="">
+        </div>
+        <div class="scrap__prlx2 scene">
+            <img src="/img/scrap_prlx.svg" data-depth="0.6" alt="">
+        </div>
+    </div>
+</Section>
+
+<style is:global lang="scss">
+    .scrap{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-bottom: fluid(60px, 120px);
+        &__wrapper{
+            position: relative;
+            rotate: 7.5deg;
+            max-width: 597px;
+            p{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                font-family: "Didot";
+                rotate: 8deg;
+            }
+        }
+        &__prlx{
+            &1, &2{
+                position: absolute;
+            }
+            &1{
+                top: -97px;
+                left: 24px;
+                img{
+                    width: 113px;
+                }
+            }
+            &2{
+                right: 86px;
+                top: -150px;
+            }
+        }
+    }
+</style>

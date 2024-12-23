@@ -35,17 +35,21 @@ const info: {title: string; text: string}[] = [
                 }
             </div>
             <div class="stepsBlock__leftImg">
-                <img src="/img/steps_prlx2.svg" alt="" class="stepsBlock__leftImg-prlx">
-                <div class="stepsBlock__leftImg-img scene">
-                    <img data-depth="0.6" src="/img/steps_2.png" alt="">
+                <div class="stepsBlock__leftImg-prlx scene">
+                    <img src="/img/steps_prlx2.svg" data-depth="0.6" alt="">
+                </div>
+                <div class="stepsBlock__leftImg-img">
+                    <img src="/img/steps_2.png" alt="">
                 </div>
             </div>
         </div>
         <div class="stepsBlock__right">
             <div class="stepsBlock__rightImg">
-                <img src="/img/steps_prlx1.svg" alt="" class="stepsBlock__rightImg-prlx">
-                <div class="stepsBlock__rightImg-img scene">
-                    <img data-depth="0.6" src="/img/steps_1.png" alt="">
+                <div class="stepsBlock__rightImg-prlx scene">
+                    <img src="/img/steps_prlx1.svg" data-depth="0.6" alt="">
+                </div>
+                <div class="stepsBlock__rightImg-img">
+                    <img src="/img/steps_1.png" alt="">
                 </div>
             </div>
             <div class="stepsBlock__rightInfo">
@@ -93,6 +97,8 @@ const info: {title: string; text: string}[] = [
                     height: 248px;
                 }
                 &-prlx{
+                    width: 100%;
+                    height: auto;
                     bottom: -12px;
                     right: 153px;
                     z-index: -1;

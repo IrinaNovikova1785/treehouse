@@ -4,7 +4,9 @@ import Section from "./Section.astro";
 --- 
 <Section>
     <div class="buyLess">
-        <img src="/img/buyLess_boy.svg" alt="">
+        <div class="scene">
+            <img src="/img/buyLess_boy.svg" data-depth="0.6" alt="">
+        </div>
         <div class="buyLess__title uppercase">Buy less, buy better</div>
     </div>
 </Section>
@@ -20,7 +22,7 @@ import Section from "./Section.astro";
             line-height: 1.3;
             text-align: center;
         }
-        img{
+        img, .scene{
             position: absolute;
             top: -116px;
             left: 32%;
