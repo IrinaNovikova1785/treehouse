@@ -1,0 +1,97 @@
+---
+import Section from "./Section.astro";
+
+---
+<Section>
+    <div class="pressAbout">
+        <div class="pressAbout__prlx1 scene">
+            <img src="/img/plane_1.svg" alt="" data-depth="0.6">
+        </div>
+        <div class="pressAbout__prlx2 scene">
+            <img src="/img/plane_2.svg" alt="" data-depth="0.6">
+        </div>
+        <h2 class="title">Press about us</h2>
+        <p>
+            “At TreeHouse we’re trying to bring our community on the journey with us, 
+            sharing the decisions we are making with our customers (and why), consulting 
+            with our base and working together toward the next goal.”
+        </p>
+        <a href="https://www.mother.ly/parenting/how-to-avoid-greenwashing/" class="pressAbout__link icon-arrow">
+            READ MORE
+        </a>
+        <div class="pressAbout__community">
+            <div class="pressAbout__community-item">
+                <img src="/img/motherly.svg" alt="">
+            </div>
+            <div class="pressAbout__community-item">
+                <img src="/img/west-side-bag.svg" alt="">
+            </div>
+        </div>
+    </div>
+</Section>
+
+<style is:global lang="scss">
+    .pressAbout{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: fluid(100px, 160px);
+        p{
+            font-size: fluid(18px, 20px);
+            max-width: 500px;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        h2{
+            margin-bottom: 40px;
+        }
+        &__link{
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse;
+            text-decoration: dotted;
+            margin-bottom: 87px;
+            &::before{
+                color: $green;
+                font-size: 30px;
+            }
+        }
+        &__prlx{
+            &1, &2{
+                position: absolute;
+            }
+            &1{
+                top: 0;
+                right: 0;
+            }
+            &2{
+                bottom: 0;
+                left: 0;
+            }
+        }
+        &__community{
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            &-item{
+                &:first-child{
+                    position: relative;
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        translate: -50% -50%;
+                        background-image: url('/img/short_1.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        rotate: 15deg;
+                        height: 165px;
+                        width: 120%;
+                    }
+                }
+            }
+        }
+    }
+</style>

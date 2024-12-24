@@ -15,12 +15,14 @@ const upperMenu: string[] = [
 
 <header class="header">
   <div class="header__wrapper">
-    <img src="/img/logo.svg" alt="" class="logo">
+    <a href="index.html">
+      <img src="/img/logo.svg" alt="" class="logo">
+    </a>
     <nav class="header__navigation">
       <ul>
         {
           upperMenu.map(i => (
-            <li><a href="#">{i}</a></li>
+            <li><a href={`/${i.toLowerCase().replace(/\s+/g, '-')}`}>{i}</a></li>
           ))
         }
       </ul>
