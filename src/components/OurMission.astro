@@ -1,0 +1,127 @@
+---
+import Section from "./Section.astro";
+
+---
+
+<Section>
+    <div class="ourMission">
+        <div class="ourMission__top">
+            <div class="ourMission__text">
+                <h4 class="uppercase">sustainable values</h4>
+                <h2 class="title">Our mission.</h2>
+                <h4 class="uppercase">
+                    JOIN US ON THIS journey towards ethical practices, sustainable fashion, and happy kids!
+                </h4>
+                <p>
+                    Our mission is to revolutionize kids fashion by creating the change we wish to see 
+                    in the world. We believe clothing should be above all, kind.
+                </p>
+            </div>
+            <div class="ourMission__photos">
+                <img src="/img/mission_1.png" alt="">
+                <img src="/img/mission_2.png" alt="">
+            </div>
+        </div>
+        <div class="ourMission__bottom">
+            <img src="/img/mission_3.png" alt="">
+            <div class="ourMission__list">
+                <h3 class="uppercase">We're committed to 4 key <br>principles:</h3>
+                <ul>
+                    <li>Certified sustainable materials </li>
+                    <li>Fair and safe working conditions for everyone involved in our supply chain</li>
+                    <li>Minimizing our environmental footprint</li>
+                    <li>Continuous assessment and improvement on all of the above.</li>
+                </ul>
+                <div class="ourMission__north">XO, Anastasia</div>
+            </div>
+        </div>
+    </div>
+</Section>
+
+<style is:global lang="scss">
+    .ourMission{
+        margin-bottom: fluid(200px, 276px);
+        &__top, &__bottom{
+            display: flex;
+        }
+        &__top{
+            align-items: center;
+            justify-content: space-between;
+        }
+        &__bottom{
+            gap: fluid(80px, 150px);
+            img{
+                object-fit: cover;
+                width: 385px;
+                height: auto;
+            }
+        }
+        &__text{
+            max-width: 390px;
+            h4{
+                &:first-of-type{
+                    margin-bottom: 16px;
+                }
+                &:last-of-type{
+                    margin-bottom: 24px;
+                }
+            }
+            h2{
+                margin-bottom: 16px;
+            }
+        }
+        &__photos{
+            position: relative;
+            img{
+                object-fit: cover;
+                &:first-child{
+                    margin-right: 66px;
+                    width: 320px;
+                    height: auto;
+                }
+                &:last-child{
+                    position: absolute;
+                    width: 172px;
+                    height: auto;
+                    right: 0;
+                    bottom: -25%;
+                }
+            }
+        }
+        &__list{
+            display: flex;
+            flex-direction: column;
+            max-width: 295px;
+            h3{
+                margin-bottom: 37px;
+                margin-top: auto;
+            }
+            ul{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                counter-reset: num;
+                li{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    &::before{
+                        content: counter(num);
+                        font-family: 'Northwell';
+                        font-size: 40px;
+                        counter-increment: num;
+                        line-height: 1;
+                        width: 22px;
+                        color: $yellow;
+                    }
+                }
+            }
+        }
+        &__north{
+            margin-top: auto;
+            font-family: 'Northwell';
+            font-size: 64px;
+            color: $yellow;
+        }
+    }
+</style>

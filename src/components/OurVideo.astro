@@ -1,0 +1,97 @@
+---
+import Section from "./Section.astro";
+
+---
+<Section>
+    <div class="ourVideo">
+        <div class="ourVideo__top">
+            <h4 class="uppercase">Inquiry Before Creation: Crafting Conscious Clothing</h4>
+            <div class="ourVideo__arr icon-arrow">Take a look at where we manufacture </div>
+        </div>
+        <div class="ourVideo__video">
+            <img src="/img/icon/play.svg" alt="" class="ourVideo__video-play">
+            <video poster="/img/videoTest.png">
+                <source src="/video/test.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</Section>
+
+<style is:global lang="scss">
+    .ourVideo{
+        margin-bottom: fluid(100px, 160px);
+        &__top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            h4{
+                max-width: 250px;
+            }
+        }
+        &__arr{
+            display: flex;
+            align-items: center;
+            max-width: 175px;
+            line-height: 1.35;
+            &::before{
+                display: block;
+                flex-shrink: 0;
+                color: $green;
+                rotate: 90deg;
+                font-size: 35px;
+                width: fit-content;
+            }
+        }
+        &__video{
+            position: relative;
+            &-play{
+                position: absolute;
+                top: 50%;
+                right: 50%;
+                translate: 50% -50%;
+                z-index: 2;
+                &.playing{
+                    display: none;
+                }
+            }
+            video{
+                width: 100%;
+                height: 540px;
+                object-fit: cover;
+                source{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        } 
+    }
+</style>
+
+
+<script>
+    let video = document.querySelector('.ourVideo__video');
+    let videoElem  = video?.querySelector('video');
+    let playButton = video?.querySelector('.ourVideo__video-play');
+
+    video?.addEventListener("click", handlePlayButton, false);
+    playVideo();
+
+    async function playVideo() {
+        try {
+            await videoElem?.play();
+            playButton?.classList.add("playing");
+        } catch (err) {
+            playButton?.classList.remove("playing");
+        }
+    }
+
+    function handlePlayButton() {
+        if (videoElem && videoElem.paused) {
+            playVideo();
+        } else {
+            videoElem?.pause();
+            playButton?.classList.remove("playing");
+        }
+    }
+</script>

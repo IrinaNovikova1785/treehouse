@@ -1,0 +1,70 @@
+---
+import Section from "./Section.astro";
+
+---
+<Section>
+    <div class="ourVision">
+        <div class="ourVision__title">
+            <h4 class="uppercase">sustainability and respect</h4>
+            <h2 class="title">Our vision</h2>
+            <h4 class="uppercase">Our promise to you is transparency and progress, not perfection</h4>
+        </div>
+        <div class="ourVision__text">
+            <p>
+                Treehouse envisions a world where conscious living and responsible practices are the norm, 
+                supported by a community that prioritizes intentional design. 
+            </p>
+            <p>
+                Through simple gender-neutral capsule collections of only essential items and a transparent 
+                supply chain, we create long lasting pieces that stand the test of time and live to be enjoyed by siblings and friends.
+            </p>
+        </div>
+        <div class="ourVision__prlx">
+            <div class="ourVision__prlx1 scene">
+                <img src="/img/swiperMain_prlx.svg" data-depth="0.6" alt="">
+            </div>
+            <div class="ourVision__prlx2 scene">
+                <img src="/img/swiperMain_prlx.svg" data-depth="0.6" alt="">
+            </div>
+        </div>
+    </div>
+</Section>    
+
+<style is:global lang="scss">
+    .ourVision{
+        display: flex;
+        gap: 40px;
+        justify-content: space-between;
+        margin-bottom: fluid(80px, 147px);
+        &__title{
+            max-width: 295px;
+            h4, h2{
+                &:first-of-type{
+                    margin-bottom: 16px;
+                }
+            }
+        }
+        &__text{
+            max-width: 385px;
+            p{
+                &:first-child{
+                    margin-bottom: 16px;
+                }
+            }
+        }
+        &__prlx{
+            position: relative;
+            &1{
+                width: 201px;
+                height: auto;
+                rotate: -70deg;
+                margin-top: -95%;
+            }
+            &2{
+                width: 91px;
+                height: 91px;
+                rotate: -170deg;
+            }
+        }
+    }
+</style>

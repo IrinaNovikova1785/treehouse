@@ -1,0 +1,77 @@
+---
+import Button from "./Button.astro";
+import Section from "./Section.astro";
+
+---
+
+<div class="letsChat">
+    <Section>
+        <div class="letsChat__wrapper">
+            <div class="letsChat__prlx scene">
+                <img src="img/boy.svg" alt="">
+            </div>
+            <div class="letsChat__text">
+                <h2 class="title">Let’s chat</h2>
+                <h4 class="uppercase">if you don't know where to start, we’re here to help you on your journey</h4>
+                <p>
+                    Whether it’s a question about different types of fabric and their properties or the best way 
+                    to wash your garment, we’re here to support you every step of the way.
+                </p>
+                <p>
+                    We’re excited to share our knowledge and answer any and all questions!
+                </p>
+                <div class="letsChat__buttons">
+                    <Button href="#">SHOP NOW</Button>
+                    <Button href="#" icon="arrow" variant="round"></Button>
+                </div>
+            </div>
+            <img src="img/between.png" alt="" class="letsChat__between">
+        </div>
+    </Section>    
+</div>
+
+<style is:global lang="scss">
+    .letsChat{
+        background-color: $greyBlue;
+        color: $white;
+        margin-bottom: 160px;
+        &__wrapper{
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            padding: 68px 103px;
+        }
+        &__buttons{
+            display: flex;
+            align-items: center;
+        }
+        &__prlx{
+            position: absolute !important;
+            right: 0;
+            top: -145px;
+            height: 150px;
+        }
+        &__text{
+            max-width: 305px;
+            h2{
+                margin-bottom: 16px;
+            }
+            h4{
+                margin-bottom: 24px;
+            }
+            p{
+                &:first-of-type{
+                    margin-bottom: 16px;
+                }
+                &:last-of-type{
+                    margin-bottom: 48px;
+                }
+            }
+        }
+        &__between{
+            height: 520px;
+            width: auto;
+            object-fit: contain;
+        }
+    }
+</style>
