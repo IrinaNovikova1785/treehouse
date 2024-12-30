@@ -1,0 +1,48 @@
+---
+import Section from "./Section.astro";
+
+---
+<Section>
+    <div class="letsCreate">
+        <div class="letsCreate__info">
+            <div class="letsCreate__prlx scene">
+                <img src="/img/steps_prlx1.svg" alt="">
+            </div>
+            <h3 class="uppercase">Let's create a meaningful change together</h3>
+            <h4 class="uppercase">don't hesitate to say hello</h4>
+            <a href="mailto:info@mygreenkid.com" class="uppercase">info@mygreenkid.com</a>
+        </div>
+        <img src="/img/letsCreate.png" alt="" class="letsCreate__img">
+    </div>
+</Section>
+
+<style is:global lang="scss">
+    .letsCreate{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: fluid(120px, 160px);
+        &__img{
+            object-fit: cover;
+            height: 437px;
+            width: auto;
+        }
+        &__info{
+            h3{
+                max-width: 294px;
+                font-size: 20px;
+                margin-bottom: 128px;
+            }
+            h4{
+                margin-bottom: 16px;
+            }
+            a{
+                font-size: fluid(32px, 44px);
+            }
+        }
+        &__prlx{
+            margin-bottom: 16px;
+            width: fit-content;
+            transform: scale(-1, 1) !important;
+        }
+    }
+</style>
